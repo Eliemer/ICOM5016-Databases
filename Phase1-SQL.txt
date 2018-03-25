@@ -1,27 +1,43 @@
 CREATE TABLE User(
-    uid bigserial PRIMARY KEY, 
-    fname varchar(10) NOT NULL,
-    lname varchar(10) NOT NULL,
+    user_id bigserial PRIMARY KEY, 
+    first_name varchar(10) NOT NULL,
+    last_name varchar(10) NOT NULL,
     phone varchar(10) NOT NULL,
-    email email NOT NULL
+    email varchar(10) NOT NULL,
+    password varchar(10) NOT NULL,
+    age tinyint NOT NULL,
+    UNIQUE (email)
 );
 
 CREATE TABLE Group(
-    gid bigserial PRIMARY KEY,
+    group_id bigserial PRIMARY KEY,
+    group_name varchar(10) NOT NULL,
+    admin_id varchar(10) FOREIGN KEY REFERENCES User(uid),
+    date_created date NOT NULL
 );
 
 CREATE TABLE Messages(
-    mid bigserial PRIMARY KEY,
-    sentfrom varchar(10) FOREIGN KEY REFERENCES Group(gid),
-    sentby varchar(10) FOREIGN KEY REFERENCES User(uid),
+    message_id bigserial PRIMARY KEY,
+    sent_to varchar(10) FOREIGN KEY REFERENCES Group(gid),
+    sent_by varchar(10) FOREIGN KEY REFERENCES User(uid),
+    date date NOT NULL,
     content varchar(10) NOT NULL,
     hashtag varchar(10),
     likes int,
     dislikes int
 );
 
-CREATE TABLE AddressBook(
-    abid bigserial PRIMARY KEY,
-    owner varchar(10) FOREIGN KEY REFERENCES User(uid),
-    contacts varchar(10) FOREIGN KEY REFERENCES User(uid),
+CREATE TABLE ContactList(
+    cLid bigserial PRIMARY KEY,
+    usr_id varchar(10) FOREIGN KEY REFERENCES User(user_id),
+    contact_id varchar(10) FOREIGN KEY REFERENCES User(user_id),
+    contact_phone varchar(10) FOREIGN KEY REFERENCES User(phone),
+    contact_email varchar(10) FOREIGN KEY REFERENCES User(email)
 );
+
+CREATE TABLE Members(
+    member_id bigserial PRIMARY KEY,
+    group_id varchar(10) FOREIGN KEY REFERENCES Group(group_id),
+    usr_id varchar(10) FOREIGN KEY REFERENCES User(user_id),
+);
+    
