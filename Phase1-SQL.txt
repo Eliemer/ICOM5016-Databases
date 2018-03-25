@@ -1,0 +1,27 @@
+CREATE TABLE User(
+    uid bigserial PRIMARY KEY, 
+    fname varchar(10) NOT NULL,
+    lname varchar(10) NOT NULL,
+    phone varchar(10) NOT NULL,
+    email email NOT NULL
+);
+
+CREATE TABLE Group(
+    gid bigserial PRIMARY KEY,
+);
+
+CREATE TABLE Messages(
+    mid bigserial PRIMARY KEY,
+    sentfrom varchar(10) FOREIGN KEY REFERENCES Group(gid),
+    sentby varchar(10) FOREIGN KEY REFERENCES User(uid),
+    content varchar(10) NOT NULL,
+    hashtag varchar(10),
+    likes int,
+    dislikes int
+);
+
+CREATE TABLE AddressBook(
+    abid bigserial PRIMARY KEY,
+    owner varchar(10) FOREIGN KEY REFERENCES User(uid),
+    contacts varchar(10) FOREIGN KEY REFERENCES User(uid),
+);
