@@ -11,6 +11,8 @@ class UserHandler:
         users['lastname'] = row[2]
         users['phone'] = row[3]
         users['email'] = row[4]
+        users['username'] = row[5]
+        users['password'] = row[6]
         return users
 
     def getUsers(self):
@@ -34,6 +36,17 @@ class UserHandler:
         if result is None:
             return jsonify(ERROR='No User found by that ID')
         return jsonify(Users=result)
+
+    def getUserByUsername(self, username):
+        dao = UsersDAO()
+        result = dao.getUserByUsername(username)
+        users = []
+        if result:
+            for u in result:
+                users.append(self.arrange(u))
+            return jsonify(User=users)
+        else:
+            return jsonify(ERROR='Username doesn\'t exists')
 
     def getUsersEmails(self):
         dao = UsersDAO()

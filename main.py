@@ -37,6 +37,11 @@ def getUsersMessages():
     return UserHandler().getUsersEmails()
 
 
+@app.route('/Users/<username>')
+def getUsersByUsername(username):
+    return UserHandler().getUserByUsername(username)
+
+
 @app.route('/Messages')
 def getMessages():
     return MessagesHandler().getMessages()

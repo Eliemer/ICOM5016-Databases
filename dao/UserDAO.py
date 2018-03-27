@@ -2,12 +2,12 @@ class UsersDAO:
 
     def __init__(self):
         self.users = []
-        U1 = [158, 'Christian', 'Santiago', 7879582355, 'fucksgiven@example.com']
-        U2 = [458, 'Rjuan', 'Sanchez', 9394586251, 'givenfucks@example.com']
-        U3 = [584, 'Eliemer', 'Velez', 6258849258, 'gifucksven@example.com']
-        U4 = [265, 'Superman', 'Kent', 7274567854, 'superman@example.com']
-        U5 = [854, 'Batman', 'Wayne', 8002544562, 'bigbat@example.com']
-        U6 = [965, 'Batman', 'Kent', 5682541532, 'lilbat@example.com']
+        U1 = [158, 'Christian', 'Santiago', 7879582355, 'fucksgiven@example.com', 'csant', 'lolo']
+        U2 = [458, 'Rjuan', 'Sanchez', 9394586251, 'givenfucks@example.com', 'rsanch', 'lola']
+        U3 = [584, 'Eliemer', 'Velez', 6258849258, 'gifucksven@example.com', 'evel', ' lolu']
+        U4 = [265, 'Superman', 'Kent', 7274567854, 'superman@example.com', ' superman', 'batdie']
+        U5 = [854, 'Batman', 'Wayne', 8002544562, 'bigbat@example.com', 'batman1', 'batcave']
+        U6 = [965, 'Batman', 'Kent', 5682541532, 'lilbat@example.com', 'batman23', 'batmobile']
         self.users.append(U1)
         self.users.append(U2)
         self.users.append(U3)
@@ -38,3 +38,10 @@ class UsersDAO:
         for e in self.users:
             emails.append(e[4])
         return emails
+
+    def getUserByUsername(self, username):
+        users = []
+        for u in self.users:
+            if username == u[5]:
+                users.append(u)
+        return users
