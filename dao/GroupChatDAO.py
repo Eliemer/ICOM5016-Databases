@@ -32,22 +32,31 @@ class GroupChatDAO:
                 group.append(g)
         return group
 
-    def getGroupAdmin(self, gid):
-        admin = []
+    def getGroupID(self, name):
+        group = []
         for g in self.groups:
-            if gid == g[0]:
-                admin.append(g[2])
-        return admin
-
-    def getGroupDate(self, gid):
-        date = []
-        for g in self.groups:
-            if gid == g[0]:
-                date.append(g[3])
-        return date
+            if name == g[1]:
+                group.append(g[1], g[0])
+        return group
 
     def getGroupNames(self):
         group = []
         for g in self.groups:
             group.append(g[1])
         return group
+
+    def getGroupAdmin(self, gid):
+        admin = []
+        for g in self.groups:
+            if gid == g[0]:
+                admin.append(g[1], g[2])
+        return admin
+
+    def getGroupDate(self, gid):
+        date = []
+        for g in self.groups:
+            if gid == g[0]:
+                date.append(g[1], g[3])
+        return date
+
+
