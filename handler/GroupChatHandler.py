@@ -20,26 +20,68 @@ class GroupChatHandler:
 
     def mapNameToDict(self, row):
         name = []
-        name['group_name'] = row[0]
+        name['group_name'] = row[1]
         return name
 
     def mapAdminToDict(self, row):
         admin = []
-        admin['group_admin'] = row[0]
+        admin['group_admin'] = row[2]
         return admin
 
     def mapDateToDict(self, row):
         date = []
-        date['date_created'] = row[0]
+        date['date_created'] = row[3]
         return date
 
-    def getGroups(self):
+    def getAllGroups(self):
         dao = GroupChatDAO()
         result = dao.getGroups()
         groups = []
+        if result is None:
+            return jsonify(ERROR='No group found')
         for i in result:
             groups.append(self.mapAllToDict(i))
         return jsonify(Groups=groups)
+
+    def getAllGroupNames(self):
+        dao = GroupChatDAO()
+        result = dao.getGroups()
+        mapped = []
+        if result is None:
+            return jsonify(ERROR='No group found')
+        for r in result:
+            mapped.append(self.mapNameToDict(r))
+        return jsonify(Groups=mapped)
+
+    def getAllGroupIDs(self):
+        dao = GroupChatDAO()
+        result = dao.getGroups()
+        mapped = []
+        if result is None:
+            return jsonify(ERROR='No group found')
+        for r in result:
+            mapped.append(self.mapIDToDict(r))
+        return jsonify(Groups=mapped)
+
+    def getAllGroupAdmins(self):
+        dao = GroupChatDAO()
+        result = dao.getGroups()
+        mapped = []
+        if result is None:
+            return jsonify(ERROR='No group found')
+        for r in result:
+            mapped.append(self.mapAdminToDict(r))
+        return jsonify(Groups=mapped)
+
+    def getAllGroupDates(self):
+        dao = GroupChatDAO()
+        result = dao.getGroups()
+        mapped = []
+        if result is None:
+            return jsonify(ERROR='No group found')
+        for r in result:
+            mapped.append(self.mapDateToDict(r))
+        return jsonify(Groups=mapped)
 
     def getGroupByName(self, name):
         dao = GroupChatDAO()
@@ -68,17 +110,17 @@ class GroupChatHandler:
         if result is None:
             return jsonify(ERROR='No group found by that name')
         for r in result:
-            mapped.append(self.mapNameToDict(r[0]), self.mapIDToDict(r[1]))
+            mapped.append(self.mapNameToDict(r), self.mapIDToDict(r))
         return jsonify(Groups=mapped)
 
-    def getGroupNames(self):
+    def getGroupName(self, gid):
         dao = GroupChatDAO()
-        result = dao.getGroupNames()
+        result = dao.getGroupID(gid)
         mapped = []
         if result is None:
-            return jsonify(ERROR='No group found')
+            return jsonify(ERROR='No group found by that name')
         for r in result:
-            mapped.append(self.mapNameToDict(r))
+            mapped.append(self.mapNameToDict(r), self.mapIDToDict(r))
         return jsonify(Groups=mapped)
 
     def getGroupAdmin(self, gid):
