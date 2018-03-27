@@ -1,7 +1,12 @@
+from dao.UserDAO import *
+from handler.UserHandler import *
+
+
 class GroupChatDAO:
 
     def __init__(self):
         self.groups = []
+        # G = [group id, group name, admin id, date created]
         G1 = [1982, 'Wannabes', 158, '03-04-2017']
         G2 = [870, 'ININ4010', 584, '02-17-2018']
         G3 = [137, 'Friend\'s Club', 265, '08-27-2015']
@@ -35,7 +40,7 @@ class GroupChatDAO:
     def getGroupAdmin(self, gid):
         admin = []
         for g in self.groups:
-            if gid == g[0]:
+            if gid == g[2]:
                 admin.append(g[2])
         return admin
 

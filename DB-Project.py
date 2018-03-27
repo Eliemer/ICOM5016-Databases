@@ -1,6 +1,7 @@
 from flask import Flask
 from handler.UserHandler import *
 from handler.MessagesHandler import *
+from handler.GroupChatHandler import *
 
 app = Flask(__name__)
 
@@ -36,14 +37,29 @@ def getUsersMessages():
     return UserHandler().getUsersEmails()
 
 
-@app.route('/ChatRoom')
+@app.route('/Messages')
 def getMessages():
     return MessagesHandler().getMessages()
 
 
-@app.route('/ChatRoom/UserMessages/<int:usrid>')
+@app.route('/Messages/UserMessages/<int:usrid>')
 def getUserMessagesById(usrid):
     return MessagesHandler().getUserMessagesById(usrid)
+
+
+@app.route('/Groupchats')
+def getGroupChats():
+    return GroupChatHandler().getGroups()
+
+
+@app.route('/Groupchats/<int:gid>')
+def getGrouChatsById(gid):
+    return GroupChatHandler().getGroupByID(gid)
+
+
+@app.route('/Groupchats/Admin/<int:admin>')
+def getGroupAdmin(admin):
+    return GroupChatHandler().getGroupAdmin(admin)
 
 
 if __name__ == '__main__':

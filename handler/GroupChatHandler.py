@@ -1,11 +1,11 @@
 from dao.GroupChatDAO import GroupChatDAO
 from flask import *
 
+
 class GroupChatHandler:
 
-
     def arrange(self, row):
-        groups = []
+        groups = {}
         groups['group_id'] = row[0]
         groups['group_name'] = row[1]
         groups['group_admin'] = row[2]
@@ -32,18 +32,18 @@ class GroupChatHandler:
         result = dao.getGroupByID(gid)
         if result is None:
             return jsonify(ERROR='No group found with that ID')
-        return result
+        return jsonify(Group=result)
 
     def getGroupAdmin(self, gid):
         dao = GroupChatDAO()
         result = dao.getGroupAdmin(gid)
         if result is None:
             return jsonify(ERROR='No group found with that ID')
-        return result
+        return jsonify(Group=result)
 
     def getGroupNames(self):
         dao = GroupChatDAO()
         result = dao.getGroupNames()
         if result is None:
             return jsonify(ERROR='No group found')
-        return result
+        return jsonify(Group=result)
