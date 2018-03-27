@@ -104,7 +104,7 @@ class GroupChatHandler:
 
     def getGroupID(self, name):
         dao = GroupChatDAO()
-        result = dao.getGroupID(name)
+        result = dao.getGroupByName(name)
         mapped = []
         if result is None:
             return jsonify(ERROR='No group found by that name')
@@ -114,7 +114,7 @@ class GroupChatHandler:
 
     def getGroupName(self, gid):
         dao = GroupChatDAO()
-        result = dao.getGroupID(gid)
+        result = dao.getGroupByID(gid)
         mapped = []
         if result is None:
             return jsonify(ERROR='No group found by that name')

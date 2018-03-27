@@ -78,7 +78,7 @@ class UserHandler:
 
     def getUsersEmails(self):
         dao = UsersDAO()
-        result = dao.getUsersEmails()
+        result = dao.getUserEmails()
         mapped = []
         if result is None:
             return jsonify(ERROR='No User found by that email')

@@ -18,6 +18,7 @@ class GroupChatDAO:
     def getGroups(self):
         return self.groups
 
+    # Search by unique identifiers
     def getGroupByName(self, name):
         groups = []
         for g in self.groups:
@@ -32,20 +33,7 @@ class GroupChatDAO:
                 group.append(g)
         return group
 
-    def getGroupID(self, name):
-        group = []
-        for g in self.groups:
-            if name == g[1]:
-                group.append(g)
-        return group
-
-    def getGroupName(self, gid):
-        group = []
-        for g in self.groups:
-            if gid == g[0]:
-                group.append(g)
-        return group
-
+    # Getters
     def getGroupAdmin(self, gid):
         admin = []
         for g in self.groups:
