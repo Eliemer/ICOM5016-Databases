@@ -33,8 +33,15 @@ class UsersDAO:
                 users.append(u)
         return users
 
+    def getUserByEmail(self, email):
+        users = []
+        for u in self.users:
+            if email == u[4]:
+                users.append(u)
+        return users
+
     def getUsersEmails(self):
         emails = []
         for e in self.users:
-            emails.append(e[4])
+            emails.append(e)
         return emails
