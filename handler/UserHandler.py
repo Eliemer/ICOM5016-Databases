@@ -38,15 +38,57 @@ class UserHandler:
         email['email'] = row
         return email
 
-    def getUsers(self):
+    def getAllUsers(self):
         dao = UsersDAO()
         result = dao.getUsers()
         users = []
+        if result is None:
+            return jsonify(ERROR='No users found')
         for i in result:
             users.append(self.mapAllToDict(i))
         return jsonify(Users=users)
 
-    def getUsersByName(self, name):
+    def getAllUserIDs(self):
+        dao = UsersDAO()
+        result = dao.getUsers()
+        mapped = []
+        if result is None:
+            return jsonify(ERROR='No users found')
+        for i in result:
+            mapped.append(self.mapIDToDict(i))
+        return jsonify(Users=mapped)
+
+    def getAllUserNames(self):
+        dao = UsersDAO()
+        result = dao.getUsers()
+        mapped = []
+        if result is None:
+            return jsonify(ERROR='No users found')
+        for i in result:
+            mapped.append(self.mapFirstNameToDict(i), self.mapLastNameToDict(i))
+        return jsonify(Users=mapped)
+
+    def getAllUserPhones(self):
+        dao = UsersDAO()
+        result = dao.getUsers()
+        mapped = []
+        if result is None:
+            return jsonify(ERROR='No users found')
+        for i in result:
+            mapped.append(self.mapPhoneToDict(i))
+        return jsonify(Users=mapped)
+
+    def getAllUserEmails(self):
+        dao = UsersDAO()
+        result = dao.getUsers()
+        mapped = []
+        if result is None:
+            return jsonify(ERROR='No users found')
+        for i in result:
+            mapped.append(self.mapEmailToDict(i))
+        return jsonify(Users=mapped)
+
+    def getUserByName(self, name):
         dao = UsersDAO()
         result = dao.getUsersByName(name)
         mapped =[]
@@ -56,9 +98,9 @@ class UserHandler:
             mapped.append(self.mapAllToDict(r))
         return jsonify(Users=mapped)
 
-    def getUserById(self, usrid):
+    def getUserById(self, uid):
         dao = UsersDAO()
-        result = dao.getUserById(usrid)
+        result = dao.getUserById(uid)
         mapped = []
         if result is None:
             return jsonify(ERROR='No User found by that ID')
@@ -76,12 +118,52 @@ class UserHandler:
             mapped.append(self.mapAllToDict(r))
         return jsonify(Users=mapped)
 
-    def getUsersEmails(self):
+    def getUserID(self, name):
         dao = UsersDAO()
-        result = dao.getUserEmails()
+        result = dao.getUsersByName(name)
         mapped = []
         if result is None:
-            return jsonify(ERROR='No User found by that email')
+            return jsonify(ERROR='No User found by that name')
+        for r in result:
+            mapped.append(self.mapIDToDict(r))
+        return jsonify(Groups=mapped)
+
+    def getUserName(self, uid):
+        dao = UsersDAO()
+        result = dao.getUsersByID(uid)
+        mapped = []
+        if result is None:
+            return jsonify(ERROR='No User found by that ID')
+        for r in result:
+            mapped.append(self.mapFirstNameToDict(r), self.mapLastNameToDict(r))
+        return jsonify(Groups=mapped)
+
+    def getUserLastName(self, uid):
+        dao = UsersDAO()
+        result = dao.getUsersByName(uid)
+        mapped = []
+        if result is None:
+            return jsonify(ERROR='No User found by that ID')
+        for r in result:
+            mapped.append(self.mapLastNameToDict(r))
+        return jsonify(Groups=mapped)
+
+    def getUserEmail(self, uid):
+        dao = UsersDAO()
+        result = dao.getUsersByName(uid)
+        mapped = []
+        if result is None:
+            return jsonify(ERROR='No User found by that ID')
         for r in result:
             mapped.append(self.mapEmailToDict(r))
-        return jsonify(Users=mapped)
+        return jsonify(Groups=mapped)
+
+    def getUserPhone(self, uid):
+        dao = UsersDAO()
+        result = dao.getUsersByName(uid)
+        mapped = []
+        if result is None:
+            return jsonify(ERROR='No User found by that ID')
+        for r in result:
+            mapped.append(self.mapPhoneToDict(r))
+        return jsonify(Groups=mapped)

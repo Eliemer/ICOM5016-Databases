@@ -19,12 +19,12 @@ def login():
 @app.route('/Users')
 def getUsers():
     user = UserHandler()
-    return user.getUsers()
+    return user.getAllUsers()
 
 
 @app.route('/Users/Profile/<name>')
 def getUsersByName(name):
-    return UserHandler().getUsersByName(name)
+    return UserHandler().getUserByName(name)
 
 
 @app.route('/Users/<int:usrid>')
@@ -34,7 +34,7 @@ def getUserById(usrid):
 
 @app.route('/Users/Email')
 def getUsersMessages():
-    return UserHandler().getUsersEmails()
+    return UserHandler().getUserEmails()
 
 
 @app.route('/Messages')

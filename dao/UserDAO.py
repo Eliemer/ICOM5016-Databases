@@ -18,7 +18,7 @@ class UsersDAO:
     def getUsers(self):
         return self.users
 
-    # Search by unique identifiers
+    # Search by unique or partially unique identifiers
     def getUsersByName(self, name):
         users = []
         for u in self.users:
@@ -45,7 +45,7 @@ class UsersDAO:
         user = []
         for u in self.users:
             if gid == u[0]:
-                user.append(u[1])
+                user.append(u)
         return user
 
     def getUserPhone(self, gid):
