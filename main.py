@@ -2,6 +2,7 @@ from flask import Flask
 from handler.UserHandler import *
 from handler.MessagesHandler import *
 from handler.GroupChatHandler import *
+from handler.AddressBook import *
 
 app = Flask(__name__)
 
@@ -67,5 +68,19 @@ def getGroupAdmin(admin):
     return GroupChatHandler().getGroupAdmin(admin)
 
 
+@app.route('/Groupchats/Names')
+def getGroupNames():
+    return GroupChatHandler().getGroupNames()
+
+
+@app.route('/ContactLists')
+def getContactLists():
+    return AddressBook().getContactLists()
+
+
+@app.route('/<int:usrid>/ContactList')
+def getContactsByUser(usrid):
+    return AddressBook().getContactListbyUser(usrid)
+
 if __name__ == '__main__':
-    app.run()
+    app.run(port=6969)

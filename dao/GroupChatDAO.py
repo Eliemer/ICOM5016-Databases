@@ -41,7 +41,7 @@ class GroupChatDAO:
         admin = []
         for g in self.groups:
             if gid == g[2]:
-                admin.append(g[2])
+                admin.append(g)
         return admin
 
     def getGroupDate(self, gid):
