@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="35537fcb-540d-49fe-bbdc-8a50a1cdcb2a" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/DB-Project (1).pdf" />
-      <change beforePath="$PROJECT_DIR$/dao/AddressBookDAO.py" afterPath="$PROJECT_DIR$/dao/AddressBookDAO.py" />
-      <change beforePath="$PROJECT_DIR$/dao/HashtagDAO.py" afterPath="$PROJECT_DIR$/dao/HashtagDAO.py" />
-      <change beforePath="$PROJECT_DIR$/dao/MessagesDAO.py" afterPath="$PROJECT_DIR$/dao/MessagesDAO.py" />
-      <change beforePath="$PROJECT_DIR$/dao/UserDAO.py" afterPath="$PROJECT_DIR$/dao/UserDAO.py" />
-      <change beforePath="$PROJECT_DIR$/handler/HashtagHandler.py" afterPath="$PROJECT_DIR$/handler/HashtagHandler.py" />
-      <change beforePath="$PROJECT_DIR$/handler/MessagesHandler.py" afterPath="$PROJECT_DIR$/handler/MessagesHandler.py" />
-      <change beforePath="$PROJECT_DIR$/handler/UserHandler.py" afterPath="$PROJECT_DIR$/handler/UserHandler.py" />
-      <change beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/Phase1-SQL.txt" afterPath="$PROJECT_DIR$/Phase1-SQL.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -49,11 +42,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MessagesHandler.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MessagesHandler.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/handler/MessagesHandler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
+            <state relative-caret-position="867">
               <caret line="52" column="28" lean-forward="true" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Phase1-SQL.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Phase1-SQL.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="19" column="22" lean-forward="true" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -135,6 +138,7 @@
         <option value="$PROJECT_DIR$/dao/MessagesDAO.py" />
         <option value="$PROJECT_DIR$/handler/UserHandler.py" />
         <option value="$PROJECT_DIR$/handler/GroupChatHandler.py" />
+        <option value="$PROJECT_DIR$/Phase1-SQL.txt" />
       </list>
     </option>
   </component>
@@ -145,8 +149,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="538" />
-    <option name="width" value="835" />
+    <option name="x" value="676" />
+    <option name="width" value="697" />
     <option name="height" value="735" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -327,7 +331,14 @@
       <option name="project" value="LOCAL" />
       <updated>1522207280456</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Merge branch 'master' of https://github.com/Eliemer/ICOM5016-Databases">
+      <created>1522270792310</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1522270792310</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -340,7 +351,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38263667" sideWeight="0.60539085" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280507" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18081991" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09224012" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -401,7 +412,8 @@
     <MESSAGE value="UserHandler arrange functions" />
     <MESSAGE value="UserHandler, GroupChat, Messages arrange functions. Updated Messages DAO" />
     <MESSAGE value="Additional GroupChat Handler functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Additional GroupChat Handler functions" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/Eliemer/ICOM5016-Databases" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/Eliemer/ICOM5016-Databases" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -410,16 +422,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/dao/MessagesDAO.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="48" column="30" lean-forward="false" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/handler/MessagesHandler.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
@@ -885,8 +887,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/handler/MessagesHandler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
+        <state relative-caret-position="867">
           <caret line="52" column="28" lean-forward="true" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Phase1-SQL.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="19" column="22" lean-forward="true" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
           <folding />
         </state>
       </provider>
