@@ -12,13 +12,18 @@ class UserHandler:
         users['phone'] = row[3]
         users['email'] = row[4]
         users['username'] = row[5]
-        users['password'] = row[6]
         return users
 
     def arrangeEmails(self, row):
         emails = {}
         emails['email'] = row
         return emails
+
+    def arrangePhone(self, phone):
+        phones = {}
+        phones['phone number'] = phone[3]
+        phones['Name'] = phone[1]
+        return phones
 
     def getUsers(self):
         dao = UsersDAO()
@@ -64,3 +69,11 @@ class UserHandler:
         for r in result:
             mapp.append(self.arrangeEmails(r))
         return jsonify(Users=mapp)
+
+    def getUserByPhone(self, phone):
+        dao = UsersDAO()
+        result = dao.getUserByPhone(phone)
+        mapp = []
+        for r in result:
+            mapp.append(self.arrangePhone(r))
+        return jsonify(Phone=mapp)

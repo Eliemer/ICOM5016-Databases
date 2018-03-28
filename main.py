@@ -43,6 +43,11 @@ def getUsersByUsername(username):
     return UserHandler().getUserByUsername(username)
 
 
+@app.route('/Users/Phone/<int:phone>')
+def getUserByPhone(phone):
+    return UserHandler().getUserByPhone(phone)
+
+
 @app.route('/Messages')
 def getMessages():
     return MessagesHandler().getMessages()

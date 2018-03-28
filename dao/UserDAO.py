@@ -45,3 +45,10 @@ class UsersDAO:
             if username == u[5]:
                 users.append(u)
         return users
+
+    def getUserByPhone(self, phone):
+        users = []
+        for u in self.users:
+            if phone == u[3]:
+                users.append(u)
+        return users
