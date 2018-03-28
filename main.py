@@ -83,5 +83,10 @@ def getContactsByUser(usrid):
     return AddressBook().getContactListbyUser(usrid)
 
 
+@app.route('/Hashtags')
+def getHashtags():
+    return MessagesHandler().getHashtags()
+
+
 if __name__ == '__main__':
     app.run(port=4545)

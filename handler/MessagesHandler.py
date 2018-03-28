@@ -54,3 +54,8 @@ class MessagesHandler:
         for i in result:
             message.append(self.arrange(i))
         return jsonify(Message=message)
+
+    def getHashtags(self):
+        dao = MessagesDAO()
+        result = dao.getHashtags()
+        return jsonify(Hashtags=result)
