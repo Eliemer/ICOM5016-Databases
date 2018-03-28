@@ -43,11 +43,6 @@ def getUsersByUsername(username):
     return UserHandler().getUserByUsername(username)
 
 
-@app.route('/Users/Phone/<int:phone>')
-def getUserByPhone(phone):
-    return UserHandler().getUserByPhone(phone)
-
-
 @app.route('/Messages')
 def getMessages():
     return MessagesHandler().getMessages()
@@ -88,5 +83,10 @@ def getContactsByUser(usrid):
     return AddressBook().getContactListbyUser(usrid)
 
 
+@app.route('/Hashtags')
+def getHashtags():
+    return MessagesHandler().getHashtags()
+
+
 if __name__ == '__main__':
-    app.run(port=6969)
+    app.run(port=4545)

@@ -1,14 +1,19 @@
 from dao.MessagesDAO import MessagesDAO
 
+
 class HashtagDAO:
-    def _init_(self):
+    def __init__(self):
         self.hashtags = []
+        messages = MessagesDAO().getMessages()
         tmp = []
-        messages = MessagesDAO.getMessages()
-        regex = '\# '
         for m in messages:
-            tmp = m[2].split(regex)
-            self.hashtags.append(tmp[1])
+            tmp.append(m[2].split('#'))
+            self.hashtags.append(tmp)
+
+
+    def getHashtags(self):
+        return self.hashtags
+
 
 
 

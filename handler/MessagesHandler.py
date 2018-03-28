@@ -49,8 +49,13 @@ class MessagesHandler:
         dao = MessagesDAO()
         result = dao.getUserMessagebyId(usrid)
         message = []
-        if result is None:
-            return jsonify(Error='Id not in Database')
-        for i in result:
-            message.append(self.arrange(i))
-        return jsonify(Message=message)
+        if result:
+            for i in result:
+                message.append(self.arrange(i))
+            return jsonify(Message=message)
+        return jsonify(Error='Id not in Database')
+
+    def getHashtags(self):
+        dao = MessagesDAO()
+        result = dao.getHashtags()
+        return jsonify(Hashtags=result)
