@@ -12,6 +12,26 @@ class GroupChatHandler:
         groups['date_created'] = row[3]
         return groups
 
+    def arrangeGroupID(self, row):
+        groups = {}
+        groups['group_id'] = row[0]
+        return groups
+
+    def arrangeGroupName(self, row):
+        groups = {}
+        groups['group_name'] = row[1]
+        return groups
+
+    def arrangeGroupAdmin(self, row):
+        groups = {}
+        groups['group_admin'] = row[2]
+        return groups
+
+    def arrangeDateCreated(self, row):
+        groups = {}
+        groups['date_created'] = row[3]
+        return groups
+
     def getGroups(self):
         dao = GroupChatDAO()
         result = dao.getGroups()

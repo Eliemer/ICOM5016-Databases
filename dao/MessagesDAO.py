@@ -4,16 +4,15 @@ from dao.UserDAO import UsersDAO
 class MessagesDAO:
     def __init__(self):
         self.messages = []
-        # m = [id, name, content, likes, dislikes]
-        m1 = [UsersDAO().users[0][0], UsersDAO().users[0][1], 'Hello World',4,5]
-        m2 = [UsersDAO().users[1][0], UsersDAO().users[1][1], 'Sup?',5,2]
-        m3 = [UsersDAO().users[2][0], UsersDAO().users[2][1], 'How you doin?',5,3]
-        m4 = [UsersDAO().users[3][0], UsersDAO().users[3][1], 'Bye World',4,8]
-        m5 = [UsersDAO().users[0][0], UsersDAO().users[0][1], 'ByeBye',0,0]
-        m6 = [UsersDAO().users[0][0], UsersDAO().users[0][1], 'Hello Hell',9,8]
-        m7 = [UsersDAO().users[0][0], UsersDAO().users[0][1], 'DB is the best',6,0]
-        m8 = [UsersDAO().users[0][0], UsersDAO().users[0][1], 'Python sucks big time',0,4]
-        m9 = [UsersDAO().users[0][0], UsersDAO().users[0][1], 'See you tomorrow',8,7]
+        m1 = [UsersDAO().users[0][0], UsersDAO().users[0][1], 'Hello World']
+        m2 = [UsersDAO().users[1][0], UsersDAO().users[1][1], 'Sup?']
+        m3 = [UsersDAO().users[2][0], UsersDAO().users[2][1], 'How you doin?']
+        m4 = [UsersDAO().users[3][0], UsersDAO().users[3][1], 'Bye World']
+        m5 = [UsersDAO().users[0][0], UsersDAO().users[0][1], 'ByeBye']
+        m6 = [UsersDAO().users[0][0], UsersDAO().users[0][1], 'Hello Hell']
+        m7 = [UsersDAO().users[0][0], UsersDAO().users[0][1], 'DB is the best']
+        m8 = [UsersDAO().users[0][0], UsersDAO().users[0][1], 'Python sucks big time']
+        m9 = [UsersDAO().users[0][0], UsersDAO().users[0][1], 'See you tomorrow']
 
         self.messages.append(m1)
         self.messages.append(m2)

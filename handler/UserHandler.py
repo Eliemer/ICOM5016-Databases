@@ -1,5 +1,5 @@
 from dao.UserDAO import UsersDAO
-from flask import *
+from flask import jsonify
 
 
 class UserHandler:
@@ -14,16 +14,35 @@ class UserHandler:
         users['username'] = row[5]
         return users
 
-    def arrangeEmails(self, row):
-        emails = {}
-        emails['email'] = row
-        return emails
+    def arrangeUserID(self, row):
+        users = {}
+        users['usrid'] = row[0]
+        return users
+
+    def arrangeFirstName(self, fname):
+        name = {}
+        name['firstname'] = fname[1]
+        return name
+
+    def arrangeLastName(self, lname):
+        name = {}
+        name['lastname'] = lname[2]
+        return name
 
     def arrangePhone(self, phone):
         phones = {}
         phones['phone number'] = phone[3]
-        phones['Name'] = phone[1]
         return phones
+
+    def arrangeEmails(self, row):
+        emails = {}
+        emails['email'] = row[4]
+        return emails
+
+    def arrangeUserName(self, usrname):
+        user = {}
+        user['username'] = usrname[5]
+        return user
 
     def getUsers(self):
         dao = UsersDAO()
