@@ -18,12 +18,12 @@ class UsersDAO:
     def getUsers(self):
         return self.users
 
+    # Search by unique or partially unique identifiers
     def getUsersByName(self, name):
         users = []
         for u in self.users:
-            if name == u[1]:
+            if name == u[1] or name == u[1] + u[2]:
                 users.append(u)
-
         return users
 
     def getUserById(self, usrid):
@@ -33,15 +33,42 @@ class UsersDAO:
                 users.append(u)
         return users
 
-    def getUsersEmails(self):
-        emails = []
-        for e in self.users:
-            emails.append(e[4])
-        return emails
+    def getUserByEmail(self, email):
+        users = []
+        for u in self.users:
+            if email == u[4]:
+                users.append(u)
+        return users
 
-    def getUserByUsername(self, username):
+    def getUserByUserName(self, username):
         users = []
         for u in self.users:
             if username == u[5]:
                 users.append(u)
         return users
+
+    # Getters
+    def getUserName(self, uid):
+        user = []
+        for u in self.users:
+            if uid == u[0]:
+                user.append(u)
+        return user
+
+    def getUserLastName(self, gid):
+        user = []
+        for u in self.users:
+            if gid == u[0]:
+                user.append(u)
+        return user
+
+    def getUserPhone(self, gid):
+        phone = []
+        for p in self.users:
+            if gid == p[0]:
+                phone.append(p)
+        return phone
+
+    def loginUserNameAndPasswod(self, username, password):
+        for u in getUserByUserName(username):
+            return password == u[6]

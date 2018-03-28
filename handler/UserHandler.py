@@ -12,8 +12,18 @@ class UserHandler:
         users['phone'] = row[3]
         users['email'] = row[4]
         users['username'] = row[5]
-        users['password'] = row[6]
         return users
+
+    def arrangeEmails(self, row):
+        emails = {}
+        emails['email'] = row
+        return emails
+
+    def arrangePhone(self, phone):
+        phones = {}
+        phones['phone number'] = phone[3]
+        phones['Name'] = phone[1]
+        return phones
 
     def getUsers(self):
         dao = UsersDAO()
@@ -28,14 +38,18 @@ class UserHandler:
         result = dao.getUsersByName(name)
         if result is None:
             return jsonify(ERROR="No User Found")
-        return jsonify(Users=result)
+        mapp = self.arrange(result)
+        return jsonify(Users=mapp)
 
     def getUserById(self, usrid):
         dao = UsersDAO()
         result = dao.getUserById(usrid)
         if result is None:
             return jsonify(ERROR='No User found by that ID')
-        return jsonify(Users=result)
+        mapp = []
+        for r in result:
+            mapp.append(self.arrange(r))
+        return jsonify(Users=mapp)
 
     def getUserByUsername(self, username):
         dao = UsersDAO()
@@ -51,4 +65,15 @@ class UserHandler:
     def getUsersEmails(self):
         dao = UsersDAO()
         result = dao.getUsersEmails()
-        return jsonify(Messages=result)
+        mapp = []
+        for r in result:
+            mapp.append(self.arrangeEmails(r))
+        return jsonify(Users=mapp)
+
+    def getUserByPhone(self, phone):
+        dao = UsersDAO()
+        result = dao.getUserByPhone(phone)
+        mapp = []
+        for r in result:
+            mapp.append(self.arrangePhone(r))
+        return jsonify(Phone=mapp)
