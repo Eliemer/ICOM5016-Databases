@@ -32,13 +32,62 @@ class GroupChatHandler:
         groups['date_created'] = row[3]
         return groups
 
-    def getGroups(self):
+    def getAllGroups(self):
         dao = GroupChatDAO()
         result = dao.getGroups()
         groups = []
+        if result is None:
+            return jsonify(ERROR='No groups found')
         for i in result:
             groups.append(self.arrange(i))
         return jsonify(Groups=groups)
+
+    def getAllGroupIDs(self):
+        dao = GroupChatDAO()
+        result = dao.getGroups()
+        groups = []
+        if result is None:
+            return jsonify(ERROR='No groups found')
+        for i in result:
+            groups.append(self.arrangeGroupID(i))
+        return jsonify(Groups=groups)
+
+    def getAllGroupNames(self):
+        dao = GroupChatDAO()
+        result = dao.getGroupNames()
+        group = []
+        if result is None:
+            return jsonify(ERROR='No groups found')
+        for i in result:
+            group.append(self.arrangeGroupName(i))
+        return jsonify(Group=result)
+
+    def getAllGroupAdmins(self):
+        dao = GroupChatDAO()
+        result = dao.getGroupNames()
+        group = []
+        if result is None:
+            return jsonify(ERROR='No groups found')
+        for i in result:
+            group.append(self.arrangeGroupAdmin(i))
+        return jsonify(Group=result)
+
+    def getAllGroupDateCreated(self):
+        dao = GroupChatDAO()
+        result = dao.getGroups()
+        group = []
+        if result is None:
+            return jsonify(ERROR='No groups found')
+        for i in result:
+            group.append(self.arrangeDateCreated(i))
+        return jsonify(Group=result)
+
+    def getGroupAdmin(self, gid):
+        dao = GroupChatDAO()
+        result = dao.getGroupAdmin(gid)
+        if result is None:
+            return jsonify(ERROR='No group found with that ID')
+        return jsonify(Group=result)
 
     def getGroupByName(self, name):
         dao = GroupChatDAO()
@@ -54,16 +103,4 @@ class GroupChatHandler:
             return jsonify(ERROR='No group found with that ID')
         return jsonify(Group=result)
 
-    def getGroupAdmin(self, gid):
-        dao = GroupChatDAO()
-        result = dao.getGroupAdmin(gid)
-        if result is None:
-            return jsonify(ERROR='No group found with that ID')
-        return jsonify(Group=result)
 
-    def getGroupNames(self):
-        dao = GroupChatDAO()
-        result = dao.getGroupNames()
-        if result is None:
-            return jsonify(ERROR='No group found')
-        return jsonify(Group=result)
