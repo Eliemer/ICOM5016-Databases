@@ -72,7 +72,7 @@ class MessagesDAO:
     def getHashtags(self):
         result = []
         for m in self.messages:
-            h = m[2].split('#')
+            h = m[4].split('#')
             if len(h) > 1:
                 result.append('#' + h[1])
 
