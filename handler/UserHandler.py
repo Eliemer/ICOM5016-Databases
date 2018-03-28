@@ -1,5 +1,5 @@
 from dao.UserDAO import UsersDAO
-import flask
+from flask import jsonify
 
 
 class UserHandler:
