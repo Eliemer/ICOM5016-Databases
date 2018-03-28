@@ -60,7 +60,7 @@ def getUserMessagesById(usrid):
 
 @app.route('/Groupchats')
 def getGroupChats():
-    return GroupChatHandler().getGroups()
+    return GroupChatHandler().getAllGroups()
 
 
 @app.route('/Groupchats/<int:gid>')
@@ -75,7 +75,7 @@ def getGroupAdmin(admin):
 
 @app.route('/Groupchats/Names')
 def getGroupNames():
-    return GroupChatHandler().getGroupNames()
+    return GroupChatHandler().getAllGroupNames()
 
 
 @app.route('/ContactLists')
