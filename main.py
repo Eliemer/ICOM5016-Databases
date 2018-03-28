@@ -28,17 +28,17 @@ def getUsersByName(name):
     return UserHandler().getUsersByName(name)
 
 
-@app.route('/Users/<int:usrid>')
+@app.route('/Users/<int:usrid>/Profile')
 def getUserById(usrid):
     return UserHandler().getUserById(usrid)
 
 
-@app.route('/Users/Email')
+@app.route('/Users/Emails')
 def getUsersMessages():
     return UserHandler().getUsersEmails()
 
 
-@app.route('/Users/<username>')
+@app.route('/Users/<username>/Profile')
 def getUsersByUsername(username):
     return UserHandler().getUserByUsername(username)
 
