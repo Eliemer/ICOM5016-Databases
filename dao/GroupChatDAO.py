@@ -2,7 +2,6 @@ class GroupChatDAO:
 
     def __init__(self):
         self.groups = []
-        # G = [group id, group name, admin id, date created]
         G1 = [1982, 'Wannabes', 158, '03-04-2017']
         G2 = [870, 'ININ4010', 584, '02-17-2018']
         G3 = [137, 'Friend\'s Club', 265, '08-27-2015']
@@ -49,8 +48,4 @@ class GroupChatDAO:
                 date.append(g)
         return date
 
-    def getGroupNames(self):
-        group = []
-        for g in self.groups:
-            group.append(g[1])
-        return group
+

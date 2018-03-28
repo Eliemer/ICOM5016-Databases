@@ -1,7 +1,6 @@
 from dao.GroupChatDAO import GroupChatDAO
 from flask import *
 
-
 class GroupChatHandler:
 
 
