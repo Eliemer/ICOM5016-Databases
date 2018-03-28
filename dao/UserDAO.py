@@ -2,6 +2,7 @@ class UsersDAO:
 
     def __init__(self):
         self.users = []
+        # U = [id, name, last name, phone, email, username, password]
         U1 = [158, 'Christian', 'Santiago', 7879582355, 'fucksgiven@example.com', 'csant', 'lolo']
         U2 = [458, 'Rjuan', 'Sanchez', 9394586251, 'givenfucks@example.com', 'rsanch', 'lola']
         U3 = [584, 'Eliemer', 'Velez', 6258849258, 'gifucksven@example.com', 'evel', ' lolu']
@@ -40,14 +41,20 @@ class UsersDAO:
                 users.append(u)
         return users
 
-    def getUserByUserName(self, username):
+    def getUsersEmails(self):
+        emails = []
+        for e in self.users:
+            emails.append(e[4])
+        return emails
+
+    def getUserByUsername(self, username):
         users = []
         for u in self.users:
             if username == u[5]:
                 users.append(u)
         return users
 
-    # Getters
+    # Getters for each attribute of the user
     def getUserName(self, uid):
         user = []
         for u in self.users:

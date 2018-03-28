@@ -38,7 +38,8 @@ class UserHandler:
         result = dao.getUsersByName(name)
         if result is None:
             return jsonify(ERROR="No User Found")
-        mapp = self.arrange(result)
+        for r in result:
+            mapp = self.arrange(r)
         return jsonify(Users=mapp)
 
     def getUserById(self, usrid):
