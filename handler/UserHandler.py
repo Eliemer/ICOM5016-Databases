@@ -36,7 +36,7 @@ class UserHandler:
 
     def arrangeEmails(self, row):
         emails = {}
-        emails['email'] = row[4]
+        emails['email'] = row
         return emails
 
     def arrangeUserName(self, usrname):
@@ -55,11 +55,11 @@ class UserHandler:
     def getUsersByName(self, name):
         dao = UsersDAO()
         result = dao.getUsersByName(name)
-        if result is None:
-            return jsonify(ERROR="No User Found")
-        for r in result:
-            mapp = self.arrange(r)
-        return jsonify(Users=mapp)
+        if result:
+            for r in result:
+                mapp = self.arrange(r)
+            return jsonify(Users=mapp)
+        return jsonify(ERROR="No User Found")
 
     def getUserById(self, usrid):
         dao = UsersDAO()

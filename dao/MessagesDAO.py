@@ -65,7 +65,7 @@ class MessagesDAO:
     def getUserMessagebyId(self, usrid):
         result = []
         for i in self.messages:
-            if usrid == i[0]:
+            if usrid == i[1]:
                 result.append(i)
         return result
 
