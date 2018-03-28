@@ -82,5 +82,6 @@ def getContactLists():
 def getContactsByUser(usrid):
     return AddressBook().getContactListbyUser(usrid)
 
+
 if __name__ == '__main__':
     app.run(port=6969)

@@ -14,10 +14,10 @@ class AddressBookDAO:
         self.address1.append(p4)
 
         self.address2 = []
-        q1 = ['Liz BIOL', '9396521452','example@example.com']
-        q2 = ['Lucas INME', '7879521265', 'notexample@notexample.com']
-        q3 = ['Mami', '7874526584', 'mom@parent.com']
-        q4 = ['Papi', '7872514845', 'dad@parent.com']
+        q1 = ['154', 'Liz BIOL', '9396521452','example@example.com']
+        q2 = ['584', 'Lucas INME', '7879521265', 'notexample@notexample.com']
+        q3 = ['256', 'Mami', '7874526584', 'mom@parent.com']
+        q4 = ['632','Papi', '7872514845', 'dad@parent.com']
         self.address2.append(q1)
         self.address2.append(q2)
         self.address2.append(q3)
