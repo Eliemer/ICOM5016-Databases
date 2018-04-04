@@ -1,1 +1,1 @@
-web:gunicorn DB-Project:app
+web:gunicorn main:app
