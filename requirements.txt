@@ -1,3 +1,0 @@
-adium-theme-ubuntu==0.3.4
-gunicorn==19.7.1
-unity-lens-photos==1.0
