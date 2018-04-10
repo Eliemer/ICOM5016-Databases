@@ -1,51 +1,54 @@
+from config.db_config import pg_config
+import psycopg2
+
+
 class UsersDAO:
 
     def __init__(self):
-        self.users = []
-        # U = [id, name, last name, phone, email, username, password]
-        U1 = [158, 'Christian', 'Santiago', 7879582355, 'fucksgiven@example.com', 'csant', 'lolo']
-        U2 = [458, 'Rjuan', 'Sanchez', 9394586251, 'givenfucks@example.com', 'rsanch', 'lola']
-        U3 = [584, 'Eliemer', 'Velez', 6258849258, 'gifucksven@example.com', 'evel', ' lolu']
-        U4 = [265, 'Superman', 'Kent', 7274567854, 'superman@example.com', ' superman', 'batdie']
-        U5 = [854, 'Batman', 'Wayne', 8002544562, 'bigbat@example.com', 'batman1', 'batcave']
-        U6 = [965, 'Batman', 'Kent', 5682541532, 'lilbat@example.com', 'batman23', 'batmobile']
-        self.users.append(U1)
-        self.users.append(U2)
-        self.users.append(U3)
-        self.users.append(U4)
-        self.users.append(U5)
-        self.users.append(U6)
+        connUrl = "dbname=%s user=%s password=%s" % (pg_config['dbname'],
+                                                     pg_config['user'],
+                                                     pg_config['password'])
+        self.connection = psycopg2._connect(connUrl)
 
     def getUsers(self):
-        return self.users
+        cursor = self.connection.cursor()
+        query = "select * from Users;"
+        cursor.execute(query)
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
 
     # Search by unique or partially unique identifiers
-    def getUsersByName(self, name):
-        users = []
-        for u in self.users:
-            if name == u[1] or name == u[1] + u[2]:
-                users.append(u)
-        return users
+    def getUsersByName(self, username):
+        cursor = self.connection.cursor()
+        query = "select * from Users where uusername=%s;"
+        cursor.execute(query, (username,))
+        result = cursor.fetchone()
+        return result
 
     def getUserById(self, usrid):
-        users = []
-        for u in self.users:
-            if usrid == u[0]:
-                users.append(u)
-        return users
+        cursor = self.connection.cursor()
+        query = "select * from Users where usrid=%s;"
+        cursor.execute(query, (usrid,))
+        result = cursor.fetchone()
+        return result
 
     def getUserByEmail(self, email):
-        users = []
-        for u in self.users:
-            if email == u[4]:
-                users.append(u)
-        return users
+        cursor = self.connection.cursor()
+        query = "select * from Users where email=%s;"
+        cursor.execute(query, (email,))
+        result = cursor.fetchone()
+        return result
 
     def getUsersEmails(self):
-        emails = []
-        for e in self.users:
-            emails.append(e[4])
-        return emails
+        cursor = self.connection.cursor()
+        query = "select ufirstname, ulastname,  email from Users;"
+        cursor.execute(query)
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
 
     def getUserByUsername(self, username):
         users = []

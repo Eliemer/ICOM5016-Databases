@@ -19,7 +19,7 @@ class GroupChatHandler:
 
     def arrangeGroupName(self, row):
         groups = {}
-        groups['group_name'] = row[1]
+        groups['group_name'] = row[0]
         return groups
 
     def arrangeGroupAdmin(self, row):
@@ -36,11 +36,11 @@ class GroupChatHandler:
         dao = GroupChatDAO()
         result = dao.getGroups()
         groups = []
-        if result is None:
-            return jsonify(ERROR='No groups found')
-        for i in result:
-            groups.append(self.arrange(i))
-        return jsonify(Groups=groups)
+        if result:
+            for i in result:
+                groups.append(self.arrangeGroupName(i))
+            return jsonify(Groups=groups)
+        return jsonify(ERROR='No groups found')
 
     def getAllGroupIDs(self):
         dao = GroupChatDAO()

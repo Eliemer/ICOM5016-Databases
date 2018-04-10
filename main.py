@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify, request
 from handler.UserHandler import *
 from handler.MessagesHandler import *
 from handler.GroupChatHandler import *
@@ -19,16 +19,16 @@ def login():
 
 @app.route('/Users')
 def getUsers():
-    user = UserHandler()
-    return user.getUsers()
+    users = UserHandler().getUsers()
+    return users
 
 
-@app.route('/Users/Profile/<name>')
-def getUsersByName(name):
-    return UserHandler().getUsersByName(name)
+@app.route('/Users/Profile/<username>')
+def getUsersByName(username):
+    return UserHandler().getUsersByUsername(username)
 
 
-@app.route('/Users/<int:usrid>/Profile')
+@app.route('/Users/Profile/<int:usrid>')
 def getUserById(usrid):
     return UserHandler().getUserById(usrid)
 
@@ -40,7 +40,7 @@ def getUsersMessages():
 
 @app.route('/Users/<username>/Profile')
 def getUsersByUsername(username):
-    return UserHandler().getUserByUsername(username)
+    return UserHandler().getUserByName(username)
 
 
 @app.route('/Messages')

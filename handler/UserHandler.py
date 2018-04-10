@@ -44,6 +44,13 @@ class UserHandler:
         user['username'] = usrname[5]
         return user
 
+    def arrange2(self, row):
+        users ={}
+        users['Name'] = row[0]
+        users['Lastname'] = row[1]
+        users['Email'] = row[2]
+        return users
+
     def getUsers(self):
         dao = UsersDAO()
         result = dao.getUsers()
@@ -52,43 +59,38 @@ class UserHandler:
             users.append(self.arrange(i))
         return jsonify(Users=users)
 
-    def getUsersByName(self, name):
+    def getUsersByUsername(self, username):
         dao = UsersDAO()
-        result = dao.getUsersByName(name)
+        result = dao.getUsersByName(username)
         if result:
-            for r in result:
-                mapp = self.arrange(r)
-            return jsonify(Users=mapp)
-        return jsonify(ERROR="No User Found")
+            user = self.arrange(result)
+            return jsonify(Users=user)
+        return jsonify(ERROR="User doesn\'t exists")
 
     def getUserById(self, usrid):
         dao = UsersDAO()
         result = dao.getUserById(usrid)
-        if result is None:
-            return jsonify(ERROR='No User found by that ID')
-        mapp = []
-        for r in result:
-            mapp.append(self.arrange(r))
-        return jsonify(Users=mapp)
+        if result:
+            user = self.arrange(result)
+            return jsonify(Users=user)
+        return jsonify(ERROR='User doesn\'t exists')
 
-    def getUserByUsername(self, username):
+    def getUserByName(self, username):
         dao = UsersDAO()
         result = dao.getUserByUsername(username)
-        users = []
         if result:
-            for u in result:
-                users.append(self.arrange(u))
-            return jsonify(User=users)
+            user = self.arrange(result)
+            return jsonify(User=user)
         else:
-            return jsonify(ERROR='Username doesn\'t exists')
+            return jsonify(ERROR='User doesn\'t exists')
 
     def getUsersEmails(self):
         dao = UsersDAO()
         result = dao.getUsersEmails()
-        mapp = []
+        users = []
         for r in result:
-            mapp.append(self.arrangeEmails(r))
-        return jsonify(Users=mapp)
+            users.append(self.arrange2(r))
+        return jsonify(Users=users)
 
     def getUserByPhone(self, phone):
         dao = UsersDAO()

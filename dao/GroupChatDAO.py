@@ -1,27 +1,24 @@
 from dao.UserDAO import *
 from handler.UserHandler import *
+import psycopg2
 
 
 class GroupChatDAO:
 
     def __init__(self):
-        self.groups = []
-        # G = [group id, group name, admin id, date created]
-        G1 = [1982, 'Wannabes', 158, '03-04-2017']
-        G2 = [870, 'ININ4010', 584, '02-17-2018']
-        G3 = [137, 'Friend\'s Club', 265, '08-27-2015']
-        G4 = [1087, 'ICOM 5016 - Databases', 265, '02-14-2018']
-        G5 = [497, 'Pedrito\'s personal hell', 584, '08-29-2017']
-        G6 = [798, 'Batman\'s Fanclub', 965, '07-11-2013']
-        self.groups.append(G1)
-        self.groups.append(G2)
-        self.groups.append(G3)
-        self.groups.append(G4)
-        self.groups.append(G5)
-        self.groups.append(G6)
+        connUrl = "dbname=%s user=%s password=%s" % (pg_config['dbname'],
+                                                     pg_config['user'],
+                                                     pg_config['password'])
+        self.connection = psycopg2._connect(connUrl)
 
     def getGroups(self):
-        return self.groups
+        cursor = self.connection.cursor()
+        query = "select distinct groupname from Groupchats;"
+        cursor.execute(query)
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
 
     def getGroupByName(self, name):
         groups = []
