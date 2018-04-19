@@ -21,19 +21,20 @@ class GroupChatDAO:
         return result
 
     def getGroupByName(self, name):
-        groups = []
-        for g in self.groups:
-            if name == g[1]:
-                groups.append(g)
-        return groups
+        cursor = self.connection.cursor()
+        query = "select * from Groupchats where groupname=%s;"
+        cursor.execute(query, (name,))
+        result = cursor.fetchone()
+        return result
 
     def getGroupByID(self, gid):
-        group = []
-        for g in self.groups:
-            if gid == g[0]:
-                group.append(g)
-        return group
+        cursor = self.connection.cursor()
+        query = "select * from groupchats where groupid=%s;"
+        cursor.execute(query, (gid,))
+        result = cursor.fetchone()
+        return result
 
+    # I think this is unnecessary getters, should delete them...
     def getGroupAdmin(self, gid):
         admin = []
         for g in self.groups:
@@ -48,7 +49,7 @@ class GroupChatDAO:
                 date.append(g[3])
         return date
 
-    def getGroupNames(self):
+    def getGroupMembers(self):
         group = []
         for g in self.groups:
             group.append(g[1])

@@ -3,7 +3,6 @@ import psycopg2
 
 
 class UsersDAO:
-
     def __init__(self):
         connUrl = "dbname=%s user=%s password=%s" % (pg_config['dbname'],
                                                      pg_config['user'],
@@ -34,21 +33,21 @@ class UsersDAO:
         result = cursor.fetchone()
         return result
 
-    def getUserByEmail(self, email):
-        cursor = self.connection.cursor()
-        query = "select * from Users where email=%s;"
-        cursor.execute(query, (email,))
-        result = cursor.fetchone()
-        return result
+    # def getUserByEmail(self, email):
+    #     cursor = self.connection.cursor()
+    #     query = "select * from Users where email=%s;"
+    #     cursor.execute(query, (email,))
+    #     result = cursor.fetchone()
+    #     return result
 
-    def getUsersEmails(self):
-        cursor = self.connection.cursor()
-        query = "select ufirstname, ulastname,  email from Users;"
-        cursor.execute(query)
-        result = []
-        for row in cursor:
-            result.append(row)
-        return result
+    # def getUsersEmails(self):
+    #     cursor = self.connection.cursor()
+    #     query = "select ufirstname, ulastname,  email from Users;"
+    #     cursor.execute(query)
+    #     result = []
+    #     for row in cursor:
+    #         result.append(row)
+    #     return result
 
     def getUserByUsername(self, username):
         users = []
@@ -58,27 +57,27 @@ class UsersDAO:
         return users
 
     # Getters for each attribute of the user
-    def getUserName(self, uid):
-        user = []
-        for u in self.users:
-            if uid == u[0]:
-                user.append(u)
-        return user
-
-    def getUserLastName(self, gid):
-        user = []
-        for u in self.users:
-            if gid == u[0]:
-                user.append(u)
-        return user
-
-    def getUserPhone(self, gid):
-        phone = []
-        for p in self.users:
-            if gid == p[0]:
-                phone.append(p)
-        return phone
-
-    def loginUserNameAndPasswod(self, username, password):
-        for u in getUserByUserName(username):
-            return password == u[6]
+    # def getUserName(self, uid):
+    #     user = []
+    #     for u in self.users:
+    #         if uid == u[0]:
+    #             user.append(u)
+    #     return user
+    #
+    # def getUserLastName(self, gid):
+    #     user = []
+    #     for u in self.users:
+    #         if gid == u[0]:
+    #             user.append(u)
+    #     return user
+    #
+    # def getUserPhone(self, gid):
+    #     phone = []
+    #     for p in self.users:
+    #         if gid == p[0]:
+    #             phone.append(p)
+    #     return phone
+    #
+    # def loginUserNameAndPasswod(self, username, password):
+    #     for u in getUserByUserName(username):
+    #         return password == u[6]

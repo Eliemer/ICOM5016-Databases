@@ -5,7 +5,12 @@ from handler.GroupChatHandler import *
 from handler.AddressBook import *
 
 app = Flask(__name__)
+# app.config['JSON_SORT_KEYS'] = False
 
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 
 @app.route('/')
 def home():

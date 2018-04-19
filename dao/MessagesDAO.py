@@ -1,72 +1,30 @@
-from dao.UserDAO import UsersDAO
-from dao.GroupChatDAO import GroupChatDAO
+from config.db_config import pg_config
+import psycopg2
 
 
 class MessagesDAO:
     def __init__(self):
-        self.messages = []
-        m1 = [1,
-              UsersDAO().users[0][0],
-              GroupChatDAO().groups[0][0],
-              '03-18-2018 7:13pm',
-              'Hello World #notexample']
-        m2 = [2,
-              UsersDAO().users[1][0],
-              GroupChatDAO().groups[0][0],
-              '03-18-2018 7:13pm',
-              'Sup? #notexample']
-        m3 = [3,
-              UsersDAO().users[2][0],
-              GroupChatDAO().groups[0][0],
-              '03-18-2018 7:14pm',
-              'How you doin?']
-        m4 = [4,
-              UsersDAO().users[3][0],
-              GroupChatDAO().groups[0][0],
-              '03-18-2018 7:18pm',
-              'Bye World']
-        m5 = [5, UsersDAO().users[0][0],
-              GroupChatDAO().groups[0],
-              '03-18-2018 7:22pm',
-              'ByeBye']
-        m6 = [6,
-              UsersDAO().users[0][0],
-              GroupChatDAO().groups[0][0],
-              '03-18-2018 7:23pm',
-              'Hello Hell']
-        m7 = [7,
-              UsersDAO().users[0][0],
-              GroupChatDAO().groups[0][0],
-              '03-18-2018 7:23pm',
-              'DB is the best']
-        m8 = [8,
-              UsersDAO().users[0][0],
-              GroupChatDAO().groups[0][0],
-              '03-18-2018 7:24pm',
-              'Python sucks big time #example']
-        m9 = [9, UsersDAO().users[0][0],
-              GroupChatDAO().groups[0][0],
-              '03-18-2018 7:28pm',
-              'See you tomorrow #example']
-
-        self.messages.append(m1)
-        self.messages.append(m2)
-        self.messages.append(m3)
-        self.messages.append(m4)
-        self.messages.append(m5)
-        self.messages.append(m6)
-        self.messages.append(m7)
-        self.messages.append(m8)
-        self.messages.append(m9)
+        connUrl = "dbname=%s user=%s password=%s" % (pg_config['dbname'],
+                                                     pg_config['user'],
+                                                     pg_config['password'])
+        self.connection = psycopg2._connect(connUrl)
 
     def getMessages(self):
-        return self.messages
+        cursor = self.connection.cursor()
+        query = "select * from messages;"
+        cursor.execute(query)
+        result = []
+        for mess in cursor:
+            result.append(mess)
+        return result
 
     def getUserMessagebyId(self, usrid):
+        cursor = self.connection.cursor()
+        query = "select ufirstname, ulastname, content from Users natural inner join Messages where messages.usrid = %s;"
+        cursor.execute(query, (usrid,))
         result = []
-        for i in self.messages:
-            if usrid == i[1]:
-                result.append(i)
+        for m in cursor:
+            result.append(m)
         return result
 
     def getHashtags(self):
