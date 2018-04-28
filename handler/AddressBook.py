@@ -9,6 +9,14 @@ class AddressBook:
         address['email'] = row[4]
         return address
 
+    def arrangeContacts(self, row):
+        contacts = {}
+        contacts['Contact ID'] = row[2]
+        contacts['Name'] = row[3] + " " + row[4]
+        contacts['Phone'] = row[5]
+        contacts['Email'] = row[6]
+        return contacts
+
     def arrangeContactList(self, row):
         contact = {}
         contact['usrid'] = row[0]
@@ -36,4 +44,14 @@ class AddressBook:
         if contacts:
             return jsonify(Contacts=contacts)
         return jsonify(ERROR='No contact list found')
+
+    def getUserContacts(self, usrid):
+        dao = AddressBookDAO()
+        result = dao.getUserContacts(usrid)
+        contacts = []
+        if result:
+            for r in result:
+                contacts.append(self.arrangeContacts(r))
+            return jsonify(Contacts=contacts)
+        return jsonify(ERROR='No Contact List for the User')
 

@@ -27,6 +27,60 @@ class MessagesDAO:
             result.append(m)
         return result
 
+    def getMessageLikes(self,name, mid):
+        cursor = self.connection.cursor()
+        query = "select * from users natural inner join likes natural inner join members " \
+                "natural inner join groupchats where messageid=%s and groupname=%s;"
+        cursor.execute(query, (mid, name, ))
+        result = []
+        for m in cursor:
+            result.append(m)
+        return result
+
+    def getMessageDislikes(self, gid, mid):
+        cursor = self.connection.cursor()
+        query = "select * from users natural inner join dislike natural inner join members " \
+                    "natural inner join groupchats where messageid=%s and groupname=%s;"
+        cursor.execute(query, (mid, gid))
+        result = []
+        for r in cursor:
+            result.append(r)
+        return result
+
+    def getMessageReplies(self, gid, mid):
+        cursor = self.connection.cursor()
+        query = "select * from users natural inner join replies natural inner join members " \
+                    "natural inner join groupchats where messageid=%s and  groupname=%s;"
+        cursor.execute(query, (mid, gid, ))
+        result = []
+        for r in cursor:
+            result.append(r)
+        return result
+
+
+    def getNumberOfLikes(self, mid):
+        cursor = self.connection.cursor()
+        query = "select count(liked) from likes where messageid=%s;"
+        cursor.execute(query, (mid,))
+        result = cursor.fetchone()
+        return result
+
+    def getNumberOfDislikes(self, mid):
+        cursor = self.connection.cursor()
+        query = "select count(dislikes) from dislike where messageid=%s;"
+        cursor.execute(query, (mid,))
+        result = cursor.fetchone()
+        return result
+
+    def getReactions(self, mid):
+        cursor = self.connection.cursor()
+        query = "select count(liked) as l, count(dislikes) as dl from likes inner join dislike using(messageid) where messageid=%s;"
+        cursor.execute(query, (mid, ))
+        result = []
+        for r in cursor:
+            result.append(r)
+        return result
+
     def getHashtags(self):
         result = []
         for m in self.messages:

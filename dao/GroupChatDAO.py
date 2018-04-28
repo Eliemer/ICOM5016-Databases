@@ -13,7 +13,8 @@ class GroupChatDAO:
 
     def getGroups(self):
         cursor = self.connection.cursor()
-        query = "select distinct groupname from Groupchats;"
+        query = "select groupid, groupname, ufirstname, ulastname, date_created from groupchats " \
+                "natural inner join members natural inner join users where admind=usrid;"
         cursor.execute(query)
         result = []
         for row in cursor:
@@ -29,9 +30,23 @@ class GroupChatDAO:
 
     def getGroupByID(self, gid):
         cursor = self.connection.cursor()
-        query = "select * from groupchats where groupid=%s;"
+        query = "select ufirstname, ulastname, content, groupname " \
+                "from groupchats natural inner join messages natural inner join members natural inner join users" \
+                " where groupid=%s;"
         cursor.execute(query, (gid,))
-        result = cursor.fetchone()
+        result = []
+        for r in cursor:
+            result.append(r)
+        return result
+
+    def getGroupContent(self, name):
+        cursor = self.connection.cursor()
+        query = "select ufirstname, ulastname, content, groupname from users " \
+                "natural inner join members natural inner join messages natural inner join groupchats where groupname=%s;"
+        cursor.execute(query, (name, ))
+        result = []
+        for row in cursor:
+            result.append(row)
         return result
 
     # I think this is unnecessary getters, should delete them...
@@ -49,8 +64,23 @@ class GroupChatDAO:
                 date.append(g[3])
         return date
 
-    def getGroupMembers(self):
-        group = []
-        for g in self.groups:
-            group.append(g[1])
-        return group
+    def getUsersInGroup(self, gid):
+        cursor = self.connection.cursor()
+        query = "select ufirstname, ulastname from groupchats natural inner join members natural inner join users " \
+                "where groupid=%s;"
+        cursor.execute(query, (gid,))
+        result = []
+        for r in cursor:
+            result.append(r)
+        return result
+
+    def getUserGroupchats(self, usrid):
+        cursor = self.connection.cursor()
+        query = "select * from groupchats natural inner join members where usrid=%s"
+        cursor.execute(query, (usrid,))
+        result = []
+        for r in cursor:
+            result.append(r)
+        return result
+
+

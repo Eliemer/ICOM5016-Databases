@@ -72,7 +72,7 @@ class UserHandler:
         result = dao.getUserById(usrid)
         if result:
             user = self.arrange(result)
-            return jsonify(Users=user)
+            return jsonify(User=user)
         return jsonify(ERROR='User doesn\'t exists')
 
     def getUserByName(self, username):

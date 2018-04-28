@@ -26,3 +26,13 @@ class AddressBookDAO:
         for u in cursor:
             users.append(u)
         return users
+
+    def getUserContacts(self, usrid):
+        cursor = self.connection.cursor()
+        query = "select * from contactlist inner join users u on " \
+                "contactlist.contactid = u.usrid where contactlist.usrid=%s;"
+        cursor.execute(query, (usrid, ))
+        result = []
+        for r in cursor:
+            result.append(r)
+        return result
