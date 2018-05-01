@@ -7,14 +7,14 @@ import os
 class GroupChatDAO:
 
     def __init__(self):
-        DATABASE_URL = os.environ['DATABASE_URL']
+        # DATABASE_URL = os.environ['DATABASE_URL']
+        #
+        # self.connection = psycopg2._connect(DATABASE_URL)
 
-        self.connection = psycopg2._connect(DATABASE_URL)
-
-        # connUrl = "dbname=%s user=%s password=%s" % (pg_config['dbname'],
-        #                                              pg_config['user'],
-        #                                              pg_config['password'])
-        # self.connection = psycopg2._connect(connUrl)
+        connUrl = "dbname=%s user=%s password=%s" % (pg_config['dbname'],
+                                                     pg_config['user'],
+                                                     pg_config['password'])
+        self.connection = psycopg2._connect(connUrl)
 
     def getGroups(self):
         cursor = self.connection.cursor()
