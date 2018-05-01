@@ -192,8 +192,7 @@ class GroupChatHandler:
         if result:
             for r in result:
                 groupchats.append(self.arrangeCharlie(r))
-            return jsonify(Groupchats=groupchats)
-        return jsonify(ERROR="No User found by that ID")
+        return jsonify(Groupchats=groupchats)
 
     def getUGMLikes(self, usrid, groupname):
         dao = GroupChatDAO()

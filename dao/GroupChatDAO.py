@@ -88,7 +88,7 @@ class GroupChatDAO:
     def getUserGroupContent(self, usrid, groupname):
         cursor = self.connection.cursor()
         query = "with all_messages as (select * from messages natural inner join groupchats natural inner join users " \
-                "inner join members using(groupid) where groupname = 'Whitehouse' and members.usrid=1)," \
+                "inner join members using(groupid) where groupname = %s and members.usrid=%s)," \
                 " all_likes as (select count(*) as l, messageid from likes group by messageid), " \
                 "all_dislikes as (select count(*) as dl, messageid from dislike group by messageid) " \
                 "select content, ufirstname, ulastname, coalesce(l, 0) as likes, coalesce(dl, 0) as dislikes from all_likes " \
