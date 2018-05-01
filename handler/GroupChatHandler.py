@@ -22,9 +22,23 @@ class GroupChatHandler:
 
     def arrangeBeta(self, row):
         groups = {}
-        groups['GroupChat Name'] = row[1]
-        groups['Date Created'] = row[3]
+        groups['groupname'] = row[1]
+        groups['date'] = row[3]
         return groups
+
+    def arrangeCharlie(self, row):
+        groups = {}
+        groups['content'] = row[0]
+        groups['name'] = row[1] +" "+ row[2]
+        groups['likes'] = row[3]
+        groups['dislikes'] = row[4]
+        return groups
+
+    def arrangeDelta(self, row):
+        reactions = {}
+        reactions['likes'] = row[0]
+        reactions['messageid'] = row[1]
+        return reactions
 
     def arrangeGroupID(self, row):
         groups = {}
@@ -38,7 +52,11 @@ class GroupChatHandler:
 
     def arrangeGroupAdmin(self, row):
         groups = {}
-        groups['group_admin'] = row[2]
+        groups['userid'] = row[0]
+        groups['name'] = row[1] + " " + row[2]
+        groups['phone'] = row[3]
+        groups['email'] = row[4]
+        groups['username'] = row[5]
         return groups
 
     def arrangeDateCreated(self, row):
@@ -111,9 +129,13 @@ class GroupChatHandler:
     def getGroupAdmin(self, gid):
         dao = GroupChatDAO()
         result = dao.getGroupAdmin(gid)
-        if result is None:
-            return jsonify(ERROR='No group found with that ID')
-        return jsonify(Group=result)
+        admin = []
+        if result:
+            for r in result:
+                admin.append(self.arrangeGroupAdmin(r))
+            return jsonify(Admin=admin)
+        return jsonify(ERROR='No Groupchat by that ID')
+
 
     def getGroupByName(self, name):
         dao = GroupChatDAO()
@@ -161,6 +183,26 @@ class GroupChatHandler:
             for r in result:
                 groupchats.append(self.arrangeBeta(r))
             return jsonify(Groupchats=groupchats)
+        return jsonify(ERROR="No User found by that ID")
+
+    def getUserGroupContent(self, usrid, groupname):
+        dao = GroupChatDAO()
+        result = dao.getUserGroupContent(usrid, groupname)
+        groupchats = []
+        if result:
+            for r in result:
+                groupchats.append(self.arrangeCharlie(r))
+            return jsonify(Groupchats=groupchats)
+        return jsonify(ERROR="No User found by that ID")
+
+    def getUGMLikes(self, usrid, groupname):
+        dao = GroupChatDAO()
+        result = dao.getUGMLikes(usrid, groupname)
+        groupchats = []
+        if result:
+            for r in result:
+                groupchats.append(self.arrangeDelta(r))
+            return jsonify(Likes=groupchats)
         return jsonify(ERROR="No User found by that ID")
 
 

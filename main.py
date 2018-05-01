@@ -13,75 +13,76 @@ CORS(app)
 def page_not_found(e):
     return render_template('404.html'), 404
 
+
 @app.route('/')
 def home():
     return render_template('home.html')
 
 
-@app.route('/ConvWorld/login')
+@app.route('/JEChat/login')
 def login():
     return "Thanks for login in"
 
 
 # <------------------ Routes for User fetching actions
-@app.route('/ConvWorld/Users')
+@app.route('/JEChat/Users')
 def getUsers():
     users = UserHandler().getUsers()
     return users
 
 
-@app.route('/ConvWorld/<username>')
+@app.route('/JEChat/<username>')
 def getUsersByName(username):
     return UserHandler().getUsersByUsername(username)
 
 
-@app.route('/ConvWorld/<int:usrid>')
+@app.route('/JEChat/<int:usrid>')
 def getUserById(usrid):
     return UserHandler().getUserById(usrid)
 
 
-@app.route('/ConvWorld/Users/Emails')
+@app.route('/JEChat/Users/Emails')
 def getUsersMessages():
     return UserHandler().getUsersEmails()
 
 
-@app.route('/ConvWorld/Users/<username>')
+@app.route('/JEChat/Users/<username>')
 def getUsersByUsername(username):
     return UserHandler().getUserByName(username)
 # End of User actions ------------------------------------------->
 
 
 # Routes for Messages fetching actions
-@app.route('/ConvWorld/Messages')
+@app.route('/JEChat/Messages')
 def getMessages():
     return MessagesHandler().getMessages()
 
 
-@app.route('/ConvWorld/Users/<int:id>/Messages')
+@app.route('/JEChat/Users/<int:id>/Messages')
 def getUserMessagesById(usrid):
     return MessagesHandler().getUserMessagesById(usrid)
 
 
-@app.route('/ConvWorld/<name>/Messages/<int:mid>/likes')
+@app.route('/JEChat/<name>/Messages/<int:mid>/likes')
 def getMessageLikes(name, mid):
     return MessagesHandler().getMessageLikes(name, mid)
 
 
-@app.route('/ConvWorld/<gid>/Messages/<int:mid>/dislikes')
+@app.route('/JEChat/<gid>/Messages/<int:mid>/dislikes')
 def getMessageDislikes(gid, mid):
     return MessagesHandler().getMessageDislikes(gid, mid)
 
 
-@app.route('/ConvWorld/<gid>/Messages/<int:mid>/replies')
+@app.route('/JEChat/<gid>/Messages/<int:mid>/replies')
 def getMessageReplies(gid, mid):
     return MessagesHandler().getMessageReplies(gid, mid)
 
 
-@app.route('/ConvWorld/Messages/<int:mid>/numberoflikes')
+@app.route('/JEChat/Messages/<int:mid>/numberoflikes')
 def getNumberOfLikes(mid):
     return MessagesHandler().getNumberOfLikes(mid)
 
-@app.route('/ConvWorld/Messages/<int:mid>/numberofdislikes')
+@app.route('/JEChat/Messages/<int:mid>/numberofdislikes')
 def getNumberOfDislikes(mid):
     return MessagesHandler().getNumberOfDislikes(mid)
 
@@ -93,50 +94,58 @@ def getReactions(mid):
 
 
 # <---------------------------Routes for GroupChats fetching actions
-@app.route('/ConvWorld/GroupChats')
+@app.route('/JEChat/GroupChats')
 def getGroupChats():
     return GroupChatHandler().getAllGroups()
 
-@app.route('/ConvWorld/GroupChats/<name>/')
+@app.route('/JEChat/GroupChats/<name>')
 def getGroupchatContent(name):
     return GroupChatHandler().getGroupContent(name)
 
 
-@app.route('/ConvWorld/GroupChats/<int:gid>')
+@app.route('/JEChat/GroupChats/<int:gid>')
 def getGrouChatsById(gid):
     return GroupChatHandler().getGroupByID(gid)
 
 
-@app.route('/ConvWorld/GroupChats/<int:gid>/Members')
+@app.route('/JEChat/GroupChats/<int:gid>/Members')
 def getUsersInGroup(gid):
     return GroupChatHandler().getUsersInGroup(gid)
 
 
-@app.route('/ConvWorld/GroupChats/Admin/<int:admin>')
-def getGroupAdmin(admin):
-    return GroupChatHandler().getGroupAdmin(admin)
+@app.route('/JEChat/GroupChats/<int:gid>/Admin')
+def getGroupAdmin(gid):
+    return GroupChatHandler().getGroupAdmin(gid)
 
 
-@app.route('/ConvWorld/GroupChats/Names')
+@app.route('/JEChat/GroupChats/Names')
 def getGroupNames():
     return GroupChatHandler().getAllGroupNames()
 
 
-@app.route('/ConvWorld/<int:usrid>/GroupChats')
+@app.route('/JEChat/<int:usrid>/GroupChats')
 def getUserGroupchats(usrid):
     return GroupChatHandler().getUserGroupchats(usrid)
 
 
+@app.route('/JEChat/<int:usrid>/GroupChats/<groupname>')
+def getUserGroupContent(usrid, groupname):
+    return GroupChatHandler().getUserGroupContent(usrid, groupname)
+
+
+@app.route('/JEChat/<int:usrid>/GroupChats/<groupname>/reactionlikes')
+def getUserGroupReactions(usrid, groupname):
+    return GroupChatHandler().getUGMLikes(usrid, groupname)
 # End fo GroupChat fetching actions --------------------------->
 
 
 # <---------------- Routes for Contact Lists actions
-@app.route('/ConvWorld/ContactLists')
+@app.route('/JEChat/ContactLists')
 def getContactLists():
     return AddressBook().getContactLists()
 
 
-@app.route('/ConvWorld/<int:usrid>/ContactList')
+@app.route('/JEChat/<int:usrid>/ContactList')
 def getContactsByUser(usrid):
     return AddressBook().getUserContacts(usrid)
 
@@ -144,7 +153,7 @@ def getContactsByUser(usrid):
 # End of Contact List actions ------------------->
 # <----------------------Routes for Hashtags actions
 
-@app.route('/ConvWorld/TrendingHashtags')
+@app.route('/JEChat/TrendingHashtags')
 def getHashtags():
     return MessagesHandler().getHashtags()
 

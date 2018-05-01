@@ -10,8 +10,6 @@ class MessagesHandler:
         messages['User ID'] = row[2]
         messages['Date sent'] = row[3]
         messages['Message Content'] = row[4]
-        messages['Likes'] = row[5]
-        messages['Dislikes'] = row[6]
         return messages
 
     def arrangeJoin(self, row):

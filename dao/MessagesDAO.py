@@ -60,21 +60,21 @@ class MessagesDAO:
 
     def getNumberOfLikes(self, mid):
         cursor = self.connection.cursor()
-        query = "select count(liked) from likes where messageid=%s;"
+        query = "select count(*) from likes where messageid=%s;"
         cursor.execute(query, (mid,))
         result = cursor.fetchone()
         return result
 
     def getNumberOfDislikes(self, mid):
         cursor = self.connection.cursor()
-        query = "select count(dislikes) from dislike where messageid=%s;"
+        query = "select count(*) from dislike where messageid=%s;"
         cursor.execute(query, (mid,))
         result = cursor.fetchone()
         return result
 
     def getReactions(self, mid):
         cursor = self.connection.cursor()
-        query = "select count(liked) as l, count(dislikes) as dl from likes inner join dislike using(messageid) where messageid=%s;"
+        query = "select count(*) as l, count(*) as dl from likes inner join dislike using(messageid) where messageid=%s;"
         cursor.execute(query, (mid, ))
         result = []
         for r in cursor:

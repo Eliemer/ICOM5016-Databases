@@ -14,7 +14,7 @@ class GroupChatDAO:
     def getGroups(self):
         cursor = self.connection.cursor()
         query = "select groupid, groupname, ufirstname, ulastname, date_created from groupchats " \
-                "natural inner join members natural inner join users where admind=usrid;"
+                "natural inner join users where admind=usrid;"
         cursor.execute(query)
         result = []
         for row in cursor:
@@ -51,11 +51,13 @@ class GroupChatDAO:
 
     # I think this is unnecessary getters, should delete them...
     def getGroupAdmin(self, gid):
-        admin = []
-        for g in self.groups:
-            if gid == g[2]:
-                admin.append(g)
-        return admin
+        cursor = self.connection.cursor()
+        query = "select * from users natural inner join groupchats where groupid = %s and admind=usrid;"
+        cursor.execute(query, (gid,))
+        result = []
+        for r in cursor:
+            result.append(r)
+        return result
 
     def getGroupDate(self, gid):
         date = []
@@ -78,6 +80,30 @@ class GroupChatDAO:
         cursor = self.connection.cursor()
         query = "select * from groupchats natural inner join members where usrid=%s"
         cursor.execute(query, (usrid,))
+        result = []
+        for r in cursor:
+            result.append(r)
+        return result
+
+    def getUserGroupContent(self, usrid, groupname):
+        cursor = self.connection.cursor()
+        query = "with all_messages as (select * from messages natural inner join groupchats natural inner join users " \
+                "inner join members using(groupid) where groupname = 'Whitehouse' and members.usrid=1)," \
+                " all_likes as (select count(*) as l, messageid from likes group by messageid), " \
+                "all_dislikes as (select count(*) as dl, messageid from dislike group by messageid) " \
+                "select content, ufirstname, ulastname, coalesce(l, 0) as likes, coalesce(dl, 0) as dislikes from all_likes " \
+                "right outer join all_messages left outer join all_dislikes using(messageid) using(messageid) order by date_sent desc;"
+        cursor.execute(query, (groupname, usrid,))
+        result = []
+        for r in cursor:
+            result.append(r)
+        return result
+
+    def getUGMLikes(self, usrid, groupname):
+        cursor = self.connection.cursor()
+        query = "select count(*), messageid from likes inner join (select * from messages natural inner join groupchats natural inner join users " \
+                      "inner join members using(groupid) where groupname = %s and members.usrid=%s) as MG using(messageid) group by messageid"
+        cursor.execute(query, (groupname, usrid,))
         result = []
         for r in cursor:
             result.append(r)
