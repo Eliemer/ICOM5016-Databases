@@ -1,13 +1,20 @@
 from config.db_config import pg_config
 import psycopg2
+import os
 
 
 class MessagesDAO:
     def __init__(self):
-        connUrl = "dbname=%s user=%s password=%s" % (pg_config['dbname'],
-                                                     pg_config['user'],
-                                                     pg_config['password'])
-        self.connection = psycopg2._connect(connUrl)
+        # Uncomment for heroku use
+        DATABASE_URL = os.environ['DATABASE_URL']
+
+        self.connection = psycopg2._connect(DATABASE_URL)
+
+        # Uncomment for local use
+        # connUrl = "dbname=%s user=%s password=%s" % (pg_config['dbname'],
+        #                                              pg_config['user'],
+        #                                              pg_config['password'])
+        # self.connection = psycopg2._connect(connUrl)
 
     def getMessages(self):
         cursor = self.connection.cursor()
