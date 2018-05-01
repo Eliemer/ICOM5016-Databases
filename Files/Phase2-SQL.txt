@@ -1,0 +1,60 @@
+CREATE TABLE Users(
+    usrid serial PRIMARY KEY,
+    ufirstname varchar(120) NOT NULL,
+    ulastname varchar(120) NOT NULL,
+    uphone varchar(120) NOT NULL,
+    email varchar(120) NOT NULL,
+    uusername varchar(120) NOT NULL,
+    upassword varchar(120) NOT NULL
+);
+
+CREATE TABLE ContactList(
+    usrid integer FOREIGN KEY REFERENCES Users(usrid),
+    contactid  integer FOREIGN KEY REFERENCES Users(usrid),
+    PRIMARY KEY(usrid, contactid)
+);
+
+CREATE TABLE Groupchats(
+    groupid serial PRIMARY KEY,
+    groupname varchar(120) NOT NULL,
+    adminid varchar(120) NOT NULL,
+    date_created timestamp  without time zone NOT NULL
+);
+
+CREATE TABLE Membership(
+    usrid integer FOREIGN KEY REFERENCES Users(usrid),
+    groupid integer FOREIGN KEY REFERENCES Groupchats(groupid),
+    PRIMARY KEY(usrid, groupid)
+);
+
+CREATE TABLE Dislikes(
+    messageid integer FOREIGN KEY REFERENCES Messages(messageid),
+    usrid integer FOREIGN KEY REFERENCES Users(usrid),
+    PRIMARY KEY(messageid, usrid)
+);
+
+CREATE TABLE Likes(
+    messageid integer FOREIGN KEY REFERENCES Messages(messageid) NOT NULL,
+    usrid integer FOREIGN KEY REFERENCES Users(usrid) NOT NULL,
+    PRIMARY KEY(messageid, usrid)
+);
+
+CREATE TABLE Messages(
+    messageid serial PRIMARY KEY,
+    groupid integer FOREIGN KEY REFERENCES Groupchats(groupid) NOT NULL,
+    usrid integer FOREIGN KEY REFERENCES Users(usrid) NOT NULL,
+    date_sent timestamp without time zone NOT NULL,
+    content varchar(280) NOT NULL
+);
+
+CREATE TABLE Hashtags(
+    messageid integer FOREIGN KEY REFENCES Messages(messageid) NOT NULL,
+    hashtag varchar(280) NOT NULL,
+    PRIMARY KEY(messageid, hashtag)
+);
+
+CREATE TABLE Replies(
+    messageid integer FOREIGN KEY REFERENCES Messages(messageid) NOT NULL,    
+    repid integer FOREIGN KEY REFERENCES Messages(messageid) NOT NULL,
+    PRIMARY KEY(messageid, repid)
+);

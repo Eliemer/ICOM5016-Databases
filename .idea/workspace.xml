@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="35537fcb-540d-49fe-bbdc-8a50a1cdcb2a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/dao/AddressBookDAO.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/AddressBookDAO.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/GroupChatDAO.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/GroupChatDAO.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/MessagesDAO.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/MessagesDAO.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/UserDAO.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/UserDAO.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB-Project (1).pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Phase1-SQL.txt" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,7 +34,7 @@
         <entry file="file://$PROJECT_DIR$/dao/GroupChatDAO.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="319">
-              <caret line="11" column="57" lean-forward="true" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
+              <caret line="11" column="57" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -162,6 +160,11 @@
               <item name="ICOM5016-Databases" type="b2602c69:ProjectViewProjectNode" />
               <item name="ICOM5016-Databases" type="462c0819:PsiDirectoryNode" />
               <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ICOM5016-Databases" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ICOM5016-Databases" type="462c0819:PsiDirectoryNode" />
+              <item name="Files" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ICOM5016-Databases" type="b2602c69:ProjectViewProjectNode" />
@@ -425,8 +428,8 @@
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6026954" weight="0.32948583" />
       <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49811321" weight="0.16363636" />
       <window_info anchor="bottom" id="Python Console" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.5541667" visible="true" weight="0.273872" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16307352" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.5541667" visible="true" weight="0.273872" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16307352" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="right" id="SciView" order="5" />
@@ -863,7 +866,7 @@
     <entry file="file://$PROJECT_DIR$/dao/GroupChatDAO.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="319">
-          <caret line="11" column="57" lean-forward="true" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
+          <caret line="11" column="57" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>
