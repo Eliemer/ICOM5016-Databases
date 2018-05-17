@@ -22,11 +22,9 @@ def home():
 # Routes used for deliverables
 
 
-@app.route('/JEChat/register', methods=['GET', 'POST'])
+@app.route('/JEChat/register', methods=['POST'])
 def register():
-    if request.method == 'POST':
-        return UserHandler().authorize(request.form)
-    return jsonify('Thanks for registering in')
+    return UserHandler().insertUser(request.form)
 
 
 @app.route('/JEChat/login', methods=['POST'])
@@ -102,6 +100,8 @@ def getUserGroupReactions(usrid, groupname):
 
 @app.route('/JEChat/<int:usrid>/ContactList', methods=['GET', 'POST'])
 def getContactsByUser(usrid):
+    if request.method == 'POST':
+        return AddressBook().addContact(request.form, usrid)
     return AddressBook().getUserContacts(usrid)
 
 

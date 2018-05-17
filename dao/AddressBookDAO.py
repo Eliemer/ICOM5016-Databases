@@ -43,3 +43,13 @@ class AddressBookDAO:
         for r in cursor:
             result.append(r)
         return result
+
+    def addContact(self, userid, item):
+        cursor = self.connection.cursor()
+        query = "insert into contactlist (usrid, contactid) VALUES " \
+                "(%s, (select usrid from users where uphone=%s or email=%s)) returning *;"
+        cursor.execute(query, (userid, item, item,))
+        result = cursor.fetchone()
+        self.connection.commit()
+        return result
+    

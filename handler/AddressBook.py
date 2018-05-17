@@ -24,6 +24,12 @@ class AddressBook:
         contact['addressbook'] = row[2]
         return contact
 
+    def arrangeAlpha(self, row):
+        contact = {}
+        contact['owner_id'] = row[0]
+        contact['contact_id'] = row[1]
+        return contact
+
     def getContactLists(self):
         dao = AddressBookDAO()
         result = dao.getContactLists()
@@ -54,4 +60,20 @@ class AddressBook:
                 contacts.append(self.arrangeContacts(r))
             return jsonify(Contacts=contacts)
         return jsonify(ERROR='No Contact List for the User')
+
+    def addContact(self, form, usrid):
+        if len(form) != 2:
+            return jsonify(ERROR='Malformed request form')
+        else:
+            phone_email = form['item']
+            if phone_email and usrid:
+                dao = AddressBookDAO()
+                contact = dao.addContact(usrid, phone_email)
+                if contact:
+                    result = self.arrangeAlpha(contact)
+                    return jsonify(Contact=result)
+                else:
+                    return jsonify(ERROR='Contact non-existent')
+            else:
+                return jsonify(ERROR='Malformed request form')
 
