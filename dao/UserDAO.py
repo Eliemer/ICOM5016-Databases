@@ -40,6 +40,23 @@ class UsersDAO:
         result = cursor.fetchone()
         return result
 
+    def insert(self, fname, lname, phone, email, username, password):
+        cursor = self.connection.cursor()
+        query = "insert into users (ufirstname, ulastname, uphone, email, uusername, upassword) VALUES " \
+                "(%s, %s, %s, %s, %s, crypt(%s, gen_salt('bf', 8))) returning usrid;"
+        cursor.execute(query, (fname, lname, phone, email, username, password,))
+        result = cursor.fetchone()
+        self.connection.commit()
+        return result
+
+    def authorize(self, username, password):
+        cursor = self.connection.cursor()
+        query = "select * from users where upassword = crypt(%s, upassword) and (email=%s or uusername=%s);"
+        cursor.execute(query, (password, username, username,))
+        result = cursor.fetchone()
+        self.connection.commit()
+        return result
+
     # def getUserByEmail(self, email):
     #     cursor = self.connection.cursor()
     #     query = "select * from Users where email=%s;"

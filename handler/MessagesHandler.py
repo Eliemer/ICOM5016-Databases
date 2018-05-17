@@ -159,3 +159,22 @@ class MessagesHandler:
         dao = MessagesDAO()
         result = dao.getHashtags()
         return jsonify(Hashtags=result)
+
+    def insertMessage(self, form, userid, groupname):
+        if len(form) != 2:
+            return jsonify(ERROR='Malformed request form')
+        else:
+            group = groupname
+            usrid = userid
+            date = form['date']
+            content = form['content']
+            if group and usrid and date and content:
+                dao = MessagesDAO()
+                mess = dao.insertMessage(group, usrid, date, content)
+                if mess:
+                    result = self.arrange(mess)
+                    return jsonify(Message=result)
+                else:
+                    return jsonify(ERROR='Could not post message')
+            else:
+                return jsonify(ERROR='Wrong form posted')

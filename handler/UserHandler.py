@@ -14,9 +14,19 @@ class UserHandler:
         users['username'] = row[5]
         return users
 
-    def arrangeUserID(self, row):
+    def arrangeAlpha(self, row):
         users = {}
-        users['usrid'] = row[0]
+        users['firstname'] = row[0]
+        users['lastname'] = row[1]
+        users['phone'] = row[2]
+        users['email'] = row[3]
+        users['username'] = row[4]
+        return users
+
+    def arrangeBeta(self, row):
+        users = {}
+        users['username'] = row[0]
+        users['password'] = row[1]
         return users
 
     def arrangeFirstName(self, fname):
@@ -39,9 +49,9 @@ class UserHandler:
         emails['email'] = row
         return emails
 
-    def arrangeUserName(self, usrname):
+    def arrangeID(self, usrid):
         user = {}
-        user['username'] = usrname[5]
+        user['id'] = usrid[0]
         return user
 
     def arrange2(self, row):
@@ -99,3 +109,38 @@ class UserHandler:
         for r in result:
             mapp.append(self.arrangePhone(r))
         return jsonify(Phone=mapp)
+
+    def insertUser(self, form):
+        if len(form) != 6:
+            return jsonify(ERROR="Malformed form"), 401
+        else:
+            fname = form['firstname']
+            lname = form['lastname']
+            phone = form['phone']
+            email = form['email']
+            username = form['username']
+            password = form['password']
+            if fname and lname and phone and email and username and password:
+                dao = UsersDAO()
+                new = dao.insert(fname, lname, phone, email, username, password)
+                result = self.arrangeID(new)
+                return jsonify(User=result)
+            else:
+                return jsonify(ERROR='After method')
+
+    def authorize(self, form):
+        if len(form) != 2:
+            return jsonify(ERROR='Malformed request formed')
+        else:
+            username = form['username']
+            password = form['password']
+            if username and password:
+                dao = UsersDAO()
+                auth = dao.authorize(username, password)
+                if auth:
+                    result = self.arrange(auth)
+                    return jsonify(User=result)
+                else:
+                    return jsonify(ERROR='Wrong Password or Username/Email')
+            else:
+                return jsonify(ERROR='Malformed request form')

@@ -94,5 +94,13 @@ class MessagesDAO:
             h = m[4].split('#')
             if len(h) > 1:
                 result.append('#' + h[1])
+        return result
 
+    def insertMessage(self, group, userid, date, message):
+        cursor = self.connection.cursor()
+        query = "insert into messages (groupid, usrid, date_sent, content) VALUES " \
+                "((select groupid from groupchats where groupname=%s), %s, %s, %s) returning *;"
+        cursor.execute(query, (group, userid, date, message,))
+        result = cursor.fetchone()
+        self.connection.commit()
         return result

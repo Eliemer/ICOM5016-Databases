@@ -1,4 +1,5 @@
 from dao.GroupChatDAO import GroupChatDAO
+from dao.MessagesDAO import MessagesDAO
 from flask import *
 
 
@@ -42,7 +43,8 @@ class GroupChatHandler:
 
     def arrangeGroupID(self, row):
         groups = {}
-        groups['group_id'] = row[0]
+        groups['usrid'] = row[0]
+        groups['groupid'] = row[1]
         return groups
 
     def arrangeGroupName(self, row):
@@ -203,5 +205,23 @@ class GroupChatHandler:
                 groupchats.append(self.arrangeDelta(r))
             return jsonify(Likes=groupchats)
         return jsonify(ERROR="No User found by that ID")
+
+    def insertGroup(self, form, usrid):
+        if len(form) != 2:
+            return jsonify(ERROR='Malformed request form')
+        else:
+            name = form['groupname']
+            date = form['date']
+            if name and usrid and date:
+                dao = GroupChatDAO()
+                group = dao.insertGroup(name, usrid, date)
+                if group:
+                    result = self.arrangeGroupID(group)
+                    return jsonify(GroupID=result)
+                else:
+                    return jsonify(ERROR='Creation of groupchat denied')
+            else:
+                return jsonify(ERROR='Malformed request form')
+
 
 

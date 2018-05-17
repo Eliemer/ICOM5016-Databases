@@ -1,13 +1,14 @@
+from flask_cors import CORS
 from flask import Flask, jsonify, request
-from handler.UserHandler import *
-from handler.MessagesHandler import *
-from handler.GroupChatHandler import *
 from handler.AddressBook import *
-from flask_cors import cross_origin, CORS
+from handler.GroupChatHandler import *
+from handler.MessagesHandler import *
+from handler.UserHandler import *
 
 app = Flask(__name__)
 # app.config['JSON_SORT_KEYS'] = False
 CORS(app)
+
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -18,42 +19,28 @@ def page_not_found(e):
 def home():
     return render_template('home.html')
 
+# Routes used for deliverables
 
-@app.route('/JEChat/login')
+
+@app.route('/JEChat/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        return UserHandler().authorize(request.form)
+    return jsonify('Thanks for registering in')
+
+
+@app.route('/JEChat/login', methods=['POST'])
 def login():
-    return "Thanks for login in"
+    return UserHandler().authorize(request.form)
 
 
-# <------------------ Routes for User fetching actions
 @app.route('/JEChat/Users')
 def getUsers():
     users = UserHandler().getUsers()
     return users
 
 
-@app.route('/JEChat/<username>')
-def getUsersByName(username):
-    return UserHandler().getUsersByUsername(username)
-
-
-@app.route('/JEChat/<int:usrid>')
-def getUserById(usrid):
-    return UserHandler().getUserById(usrid)
-
-
-@app.route('/JEChat/Users/Emails')
-def getUsersMessages():
-    return UserHandler().getUsersEmails()
-
-
-@app.route('/JEChat/Users/<username>')
-def getUsersByUsername(username):
-    return UserHandler().getUserByName(username)
-# End of User actions ------------------------------------------->
-
-
-# Routes for Messages fetching actions
-@app.route('/JEChat/Messages')
+@app.route('/JEChat/Messages', methods=['GET', 'POST'])
 def getMessages():
     return MessagesHandler().getMessages()
 
@@ -63,7 +50,7 @@ def getUserMessagesById(usrid):
     return MessagesHandler().getUserMessagesById(usrid)
 
 
-@app.route('/JEChat/<name>/Messages/<int:mid>/likes')
+@app.route('/JEChat/<name>/Messages/<int:mid>/likes', methods=['GET', 'POST'])
 def getMessageLikes(name, mid):
     return MessagesHandler().getMessageLikes(name, mid)
 
@@ -90,6 +77,60 @@ def getNumberOfDislikes(mid):
 @app.route('/JEChat/Messages/<int:mid>/likes&dislikes')
 def getReactions(mid):
     return MessagesHandler().getReactions(mid)
+
+
+@app.route('/JEChat/<int:usrid>/GroupChats', methods=['GET', 'POST'])
+def getUserGroupchats(usrid):
+    if request.method == 'POST':
+        return GroupChatHandler().insertGroup(request.form, usrid)
+    else:
+        return GroupChatHandler().getUserGroupchats(usrid)
+
+
+@app.route('/JEChat/<int:usrid>/GroupChats/<groupname>', methods=['GET', 'POST'])
+def getUserGroupContent(usrid, groupname):
+    if request.method == 'POST':
+        return MessagesHandler().insertMessage(request.form, usrid, groupname)
+    else:
+        return GroupChatHandler().getUserGroupContent(usrid, groupname)
+
+
+@app.route('/JEChat/<int:usrid>/GroupChats/<groupname>/reactionlikes')
+def getUserGroupReactions(usrid, groupname):
+    return GroupChatHandler().getUGMLikes(usrid, groupname)
+
+
+@app.route('/JEChat/<int:usrid>/ContactList', methods=['GET', 'POST'])
+def getContactsByUser(usrid):
+    return AddressBook().getUserContacts(usrid)
+
+
+@app.route('/JEChat/GroupChats/<int:gid>/Members', methods=['GET', 'POST'])
+def getUsersInGroup(gid):
+    return GroupChatHandler().getUsersInGroup(gid)
+
+
+# <------------------ Routes for User fetching actions
+
+@app.route('/JEChat/<username>')
+def getUsersByName(username):
+    return UserHandler().getUsersByUsername(username)
+
+
+@app.route('/JEChat/<int:usrid>')
+def getUserById(usrid):
+    return UserHandler().getUserById(usrid)
+
+
+@app.route('/JEChat/Users/Emails')
+def getUsersMessages():
+    return UserHandler().getUsersEmails()
+
+
+@app.route('/JEChat/Users/<username>')
+def getUsersByUsername(username):
+    return UserHandler().getUserByName(username)
+# End of User actions ------------------------------------------->
 # End of Messages actions -------------------------------------->
 
 
@@ -108,11 +149,6 @@ def getGrouChatsById(gid):
     return GroupChatHandler().getGroupByID(gid)
 
 
-@app.route('/JEChat/GroupChats/<int:gid>/Members')
-def getUsersInGroup(gid):
-    return GroupChatHandler().getUsersInGroup(gid)
-
-
 @app.route('/JEChat/GroupChats/<int:gid>/Admin')
 def getGroupAdmin(gid):
     return GroupChatHandler().getGroupAdmin(gid)
@@ -121,21 +157,6 @@ def getGroupAdmin(gid):
 @app.route('/JEChat/GroupChats/Names')
 def getGroupNames():
     return GroupChatHandler().getAllGroupNames()
-
-
-@app.route('/JEChat/<int:usrid>/GroupChats')
-def getUserGroupchats(usrid):
-    return GroupChatHandler().getUserGroupchats(usrid)
-
-
-@app.route('/JEChat/<int:usrid>/GroupChats/<groupname>')
-def getUserGroupContent(usrid, groupname):
-    return GroupChatHandler().getUserGroupContent(usrid, groupname)
-
-
-@app.route('/JEChat/<int:usrid>/GroupChats/<groupname>/reactionlikes')
-def getUserGroupReactions(usrid, groupname):
-    return GroupChatHandler().getUGMLikes(usrid, groupname)
 # End fo GroupChat fetching actions --------------------------->
 
 
@@ -143,12 +164,6 @@ def getUserGroupReactions(usrid, groupname):
 @app.route('/JEChat/ContactLists')
 def getContactLists():
     return AddressBook().getContactLists()
-
-
-@app.route('/JEChat/<int:usrid>/ContactList')
-def getContactsByUser(usrid):
-    return AddressBook().getUserContacts(usrid)
-
 
 # End of Contact List actions ------------------->
 # <----------------------Routes for Hashtags actions
