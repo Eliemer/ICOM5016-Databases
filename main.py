@@ -4,6 +4,7 @@ from handler.AddressBook import *
 from handler.GroupChatHandler import *
 from handler.MessagesHandler import *
 from handler.UserHandler import *
+from handler.DashboardHandler import *
 
 app = Flask(__name__)
 # app.config['JSON_SORT_KEYS'] = False
@@ -43,7 +44,7 @@ def getMessages():
     return MessagesHandler().getMessages()
 
 
-@app.route('/JEChat/Users/<int:id>/Messages')
+@app.route('/JEChat/Users/<int:usrid>/Messages')
 def getUserMessagesById(usrid):
     return MessagesHandler().getUserMessagesById(usrid)
 
@@ -102,12 +103,51 @@ def getUserGroupReactions(usrid, groupname):
 def getContactsByUser(usrid):
     if request.method == 'POST':
         return AddressBook().addContact(request.form, usrid)
-    return AddressBook().getUserContacts(usrid)
+    else:
+        return AddressBook().getUserContacts(usrid)
 
 
 @app.route('/JEChat/GroupChats/<int:gid>/Members', methods=['GET', 'POST'])
 def getUsersInGroup(gid):
     return GroupChatHandler().getUsersInGroup(gid)
+
+
+""" Routes for Dashboard Functionality """
+""" START """
+
+
+@app.route('/JEChat/messages/countperday')
+def MessagesPerDay():
+    return Dashboard().MessagesPerDay()
+
+
+@app.route('/JEChat/likes/countperday')
+def LikesPerDay():
+    return Dashboard().LikesPerDay()
+
+
+@app.route('/JEChat/dislikes/countperday')
+def DislikesPerDay():
+    return Dashboard().DislikesPerDay()
+
+
+@app.route('/JEChat/replies/countperday')
+def RepliesPerDay():
+    return Dashboard().RepliesPerDay()
+
+
+@app.route('/JEChat/hashtags/trend')
+def TrendingHashtags():
+    return Dashboard().TrendingHashtags()
+
+
+@app.route('/JEChat/users/activity')
+def ActiveUsers():
+    return Dashboard().ActiveUsers()
+
+
+"""END"""
+
 
 
 # <------------------ Routes for User fetching actions

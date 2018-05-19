@@ -62,7 +62,7 @@ class AddressBook:
         return jsonify(ERROR='No Contact List for the User')
 
     def addContact(self, form, usrid):
-        if len(form) != 2:
+        if len(form) != 1:
             return jsonify(ERROR='Malformed request form')
         else:
             phone_email = form['item']

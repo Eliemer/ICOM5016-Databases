@@ -52,4 +52,3 @@ class AddressBookDAO:
         result = cursor.fetchone()
         self.connection.commit()
         return result
-    
