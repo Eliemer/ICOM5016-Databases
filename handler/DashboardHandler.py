@@ -11,7 +11,7 @@ class Dashboard:
         return {'count': row[0], 'date': row[1], 'user': row[2]}
 
     def arrangeCharlie(self, row):
-        return {'count': row[0], 'hashtag': row[1]}
+        return {'hashtag': row[0], 'count': row[1]}
 
     def ActiveUsers(self):
         dao = DashboardDAO()
@@ -20,7 +20,7 @@ class Dashboard:
         if result:
             for r in result:
                 count.append(self.arrangeBeta(r))
-            return jsonify(ActiveUsers=count)
+            return jsonify(Count=count)
         else:
             return jsonify(ERROR='Nothing in database')
 
@@ -31,7 +31,7 @@ class Dashboard:
         if result:
             for r in result:
                 count.append(self.arrangeAlpha(r))
-            return jsonify(MessageCount=count)
+            return jsonify(Count=count)
         else:
             return jsonify(ERROR='No Messages in Database')
 
@@ -42,7 +42,7 @@ class Dashboard:
         if result:
             for r in result:
                 count.append(self.arrangeAlpha(r))
-            return jsonify(LikeCount=count)
+            return jsonify(Count=count)
         else:
             return jsonify(ERROR='No likes in Database')
 
@@ -53,7 +53,7 @@ class Dashboard:
         if result:
             for r in result:
                 count.append(self.arrangeAlpha(r))
-            return jsonify(DislikeCount=count)
+            return jsonify(Count=count)
         else:
             return jsonify(ERROR='No dislikes in Database')
 
@@ -64,7 +64,7 @@ class Dashboard:
         if result:
             for r in result:
                 count.append(self.arrangeAlpha(r))
-            return jsonify(ReplyCount=count)
+            return jsonify(Count=count)
         else:
             return jsonify(ERROR='No replies in Database')
 
@@ -75,6 +75,6 @@ class Dashboard:
         if result:
             for r in result:
                 count.append(self.arrangeCharlie(r))
-            return jsonify(TrendingHashtags=count)
+            return jsonify(Count=count)
         else:
             return jsonify(ERROR='No hashtags in database')

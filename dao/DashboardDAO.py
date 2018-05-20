@@ -56,7 +56,7 @@ class DashboardDAO:
 
     def TrendingHashtags(self):
         cursor = self.connection.cursor()
-        query = "select hashtag, count(*) from hashtags group by hashtag;"
+        query = "select hashtag, count(*) from hashtags group by hashtag order by count(*) desc fetch first 10 rows only;"
         cursor.execute(query)
         result = []
         for r in cursor:

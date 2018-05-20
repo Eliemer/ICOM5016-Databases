@@ -1,15 +1,16 @@
 from flask import *
 from dao.MessagesDAO import *
+from dao.HashtagDAO import *
 
 
 class MessagesHandler:
     def arrange(self, row):
         messages = {}
-        messages['Message ID'] = row[0]
-        messages['Group ID'] = row[1]
-        messages['User ID'] = row[2]
-        messages['Date sent'] = row[3]
-        messages['Message Content'] = row[4]
+        messages['MessageID'] = row[0]
+        messages['GroupID'] = row[1]
+        messages['UserID'] = row[2]
+        messages['Datesent'] = row[3]
+        messages['MessageContent'] = row[4]
         return messages
 
     def arrangeJoin(self, row):
@@ -173,7 +174,8 @@ class MessagesHandler:
                 mess = dao.insertMessage(group, usrid, date, content)
                 if mess:
                     result = self.arrange(mess)
-                    return jsonify(Message=result)
+                    hashtag = HashtagDAO().parseHashtag(result)
+                    return jsonify(Message={'Message': result, 'Hashtags': hashtag})
                 else:
                     return jsonify(ERROR='Could not post message')
             else:

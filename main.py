@@ -113,9 +113,7 @@ def getUsersInGroup(gid):
 
 
 """ Routes for Dashboard Functionality """
-""" START """
-
-
+"""----------------------------------------------------START"""
 @app.route('/JEChat/messages/countperday')
 def MessagesPerDay():
     return Dashboard().MessagesPerDay()
@@ -144,9 +142,7 @@ def TrendingHashtags():
 @app.route('/JEChat/users/activity')
 def ActiveUsers():
     return Dashboard().ActiveUsers()
-
-
-"""END"""
+"""-----------------------------------------------------END"""
 
 
 
