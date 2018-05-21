@@ -109,6 +109,8 @@ def getContactsByUser(usrid):
 
 @app.route('/JEChat/GroupChats/<int:gid>/Members', methods=['GET', 'POST'])
 def getUsersInGroup(gid):
+    if request.method == 'POST':
+        return GroupChatHandler().insertMember(gid, request.form)
     return GroupChatHandler().getUsersInGroup(gid)
 
 
