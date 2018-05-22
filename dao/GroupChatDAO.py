@@ -114,7 +114,7 @@ class GroupChatDAO:
             result.append(r)
         return result
 
-    def insertGroup(self, name, userid, date):
+    def insertGroup(self, name, userid):
         cursor = self.connection.cursor()
         query = "with insert1 as (insert into groupchats(groupname, admind) VALUES (%s, %s) returning admind as usrid, groupid) " \
                 "insert into members (usrid, groupid) select usrid, groupid from insert1 returning *;"
