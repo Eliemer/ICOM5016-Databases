@@ -211,10 +211,10 @@ class GroupChatHandler:
             return jsonify(ERROR='Malformed request form')
         else:
             name = form['groupname']
-            date = form['date']
-            if name and usrid and date:
+            # date = form['date']
+            if name and usrid:
                 dao = GroupChatDAO()
-                group = dao.insertGroup(name, usrid, date)
+                group = dao.insertGroup(name, usrid)
                 if group:
                     result = self.arrangeGroupID(group)
                     return jsonify(GroupID=result)
