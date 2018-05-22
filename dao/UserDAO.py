@@ -18,7 +18,7 @@ class UsersDAO:
 
     def getUsers(self):
         cursor = self.connection.cursor()
-        query = "select * from Users;"
+        query = "select * from Users order by usrid;"
         cursor.execute(query)
         result = []
         for row in cursor:
