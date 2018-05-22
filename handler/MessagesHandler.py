@@ -167,11 +167,10 @@ class MessagesHandler:
         else:
             group = groupname
             usrid = userid
-            date = form['date']
             content = form['content']
-            if group and usrid and date and content:
+            if group and usrid and content:
                 dao = MessagesDAO()
-                mess = dao.insertMessage(group, usrid, date, content)
+                mess = dao.insertMessage(group, usrid, content)
                 if mess:
                     result = self.arrange(mess)
                     hashtag = HashtagDAO().parseHashtag(result)

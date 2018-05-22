@@ -96,11 +96,11 @@ class MessagesDAO:
                 result.append('#' + h[1])
         return result
 
-    def insertMessage(self, group, userid, date, message):
+    def insertMessage(self, group, userid, message):
         cursor = self.connection.cursor()
         query = "insert into messages (groupid, usrid, date_sent, content) VALUES " \
-                "((select groupid from groupchats where groupname=%s), %s, %s, %s) returning *;"
-        cursor.execute(query, (group, userid, date, message,))
+                "((select groupid from groupchats where groupname=%s), %s, now(), %s) returning *;"
+        cursor.execute(query, (group, userid, message,))
         result = cursor.fetchone()
         self.connection.commit()
         return result
