@@ -162,7 +162,7 @@ class MessagesHandler:
         return jsonify(Hashtags=result)
 
     def insertMessage(self, form, userid, groupname):
-        if len(form) != 2:
+        if len(form) != 1:
             return jsonify(ERROR='Malformed request form')
         else:
             group = groupname
