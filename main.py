@@ -81,7 +81,7 @@ def getReactions(mid):
 @app.route('/JEChat/<int:usrid>/GroupChats', methods=['GET', 'POST'])
 def getUserGroupchats(usrid):
     if request.method == 'POST':
-        return GroupChatHandler().insertGroup(request.form, usrid)
+        return GroupChatHandler().insertGroup(request.get_json('data'), usrid)
     else:
         return GroupChatHandler().getUserGroupchats(usrid)
 
@@ -89,7 +89,7 @@ def getUserGroupchats(usrid):
 @app.route('/JEChat/<int:usrid>/GroupChats/<groupname>', methods=['GET', 'POST'])
 def getUserGroupContent(usrid, groupname):
     if request.method == 'POST':
-        return MessagesHandler().insertMessage(request.form, usrid, groupname)
+        return MessagesHandler().insertMessage(request.get_json('data'), usrid, groupname)
     else:
         return GroupChatHandler().getUserGroupContent(usrid, groupname)
 
@@ -102,7 +102,7 @@ def getUserGroupReactions(usrid, groupname):
 @app.route('/JEChat/<int:usrid>/ContactList', methods=['GET', 'POST'])
 def getContactsByUser(usrid):
     if request.method == 'POST':
-        return AddressBook().addContact(request.form, usrid)
+        return AddressBook().addContact(request.get_json('data'), usrid)
     else:
         return AddressBook().getUserContacts(usrid)
 
@@ -110,7 +110,7 @@ def getContactsByUser(usrid):
 @app.route('/JEChat/GroupChats/<int:gid>/Members', methods=['GET', 'POST'])
 def getUsersInGroup(gid):
     if request.method == 'POST':
-        return GroupChatHandler().insertMember(gid, request.form)
+        return GroupChatHandler().insertMember(gid, request.get_json('data'))
     return GroupChatHandler().getUsersInGroup(gid)
 
 
