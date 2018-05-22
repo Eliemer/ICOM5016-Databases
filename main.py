@@ -25,12 +25,12 @@ def home():
 
 @app.route('/JEChat/register', methods=['POST'])
 def register():
-    return UserHandler().insertUser(request.form)
+    return UserHandler().insertUser(request.get_json('data '))
 
 
 @app.route('/JEChat/login', methods=['POST'])
 def login():
-    return UserHandler().authorize(request.form)
+    return UserHandler().authorize(request.get_json('data'))
 
 
 @app.route('/JEChat/Users')

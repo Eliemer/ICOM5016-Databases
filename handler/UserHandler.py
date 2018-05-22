@@ -130,7 +130,7 @@ class UserHandler:
 
     def authorize(self, form):
         if len(form) != 2:
-            return jsonify(ERROR='Malformed request formed')
+            return jsonify(ERROR='Malformed request formed(first if)')
         else:
             username = form['username']
             password = form['password']
@@ -143,4 +143,4 @@ class UserHandler:
                 else:
                     return jsonify(ERROR='Wrong Password or Username/Email')
             else:
-                return jsonify(ERROR='Malformed request form')
+                return jsonify(ERROR='Malformed request form(last return)')
