@@ -207,7 +207,7 @@ class GroupChatHandler:
         return jsonify(ERROR="No User found by that ID")
 
     def insertGroup(self, form, usrid):
-        if len(form) != 2:
+        if len(form) != 1:
             return jsonify(ERROR='Malformed request form')
         else:
             name = form['groupname']
