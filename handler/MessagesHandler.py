@@ -214,7 +214,7 @@ class MessagesHandler:
                 mess = dao.insertDislike(mid, user)
                 if mess:
                     result = self.arrangeEcho(mess)
-                    return jsonify(Likes=result)
+                    return jsonify(Dislikes=result)
                 else:
                     return jsonify(ERROR='Could not post like')
 
