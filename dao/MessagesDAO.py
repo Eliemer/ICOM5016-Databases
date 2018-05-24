@@ -112,3 +112,11 @@ class MessagesDAO:
         result = cursor.fetchone()
         self.connection.commit()
         return result
+
+    def insertDislike(self, mid, user):
+        cursor = self.connection.cursor()
+        query = "insert into dislike (messageid, usrid) VALUES (%s, %s) returning *;"
+        cursor.execute(query, (mid, user,))
+        result = cursor.fetchone()
+        self.connection.commit()
+        return result

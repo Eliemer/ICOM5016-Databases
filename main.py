@@ -57,8 +57,10 @@ def getMessageLikes(name, mid):
         return MessagesHandler().getMessageLikes(name, mid)
 
 
-@app.route('/JEChat/<gid>/Messages/<int:mid>/dislikes')
+@app.route('/JEChat/<gid>/Messages/<int:mid>/dislikes', methods = ['GET', 'POST'])
 def getMessageDislikes(gid, mid):
+    if request.method == 'POST':
+        return MessagesHandler().insertDislikes(request.json)
     return MessagesHandler().getMessageDislikes(gid, mid)
 
 
