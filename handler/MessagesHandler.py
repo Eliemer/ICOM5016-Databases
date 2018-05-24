@@ -219,15 +219,16 @@ class MessagesHandler:
                     return jsonify(ERROR='Could not post like')
 
     def insertReply(self, form):
-        if len(form) != 2:
+        if len(form) != 4:
             return jsonify(ERROR='Malformed request form')
         else:
             mid = form['mid']
             user = form['user']
             groupname = form['groupname']
-            if mid and user:
+            content = form['content']
+            if mid and user and groupname and content:
                 dao = MessagesDAO()
-                mess = dao.insertReply(mid, user, groupname)
+                mess = dao.insertReply(mid, user, groupname, content)
                 if mess:
                     result = self.arrangeEcho(mess)
                     return jsonify(Reply=result)

@@ -121,13 +121,13 @@ class MessagesDAO:
         self.connection.commit()
         return result
 
-    def insertReply(self, mid, user, groupname):
+    def insertReply(self, mid, user, groupname, content):
         cursor = self.connection.cursor()
         query = "with old_msg as (select * from messages where messageid=%s)" \
                 " insert into messages (groupid, usrid, date_sent, content) VALUES " \
                 "((select groupid from groupchats where groupname=%s), %s, now(), " \
-                "concat(concat(concat('\"RE: ',(select old_msg.content from old_msg)), '\" '), 'Nothing?'));"
-        cursor.execute(query, (mid, groupname, user,))
+                "concat(concat(concat('\"RE: ',(select old_msg.content from old_msg)), '\" '), %s));"
+        cursor.execute(query, (mid, groupname, user, content))
         result = cursor.fetchone()
         self.connection.commit()
         return result
