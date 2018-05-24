@@ -107,7 +107,7 @@ class MessagesDAO:
 
     def insertLike(self, mid, user):
         cursor = self.connection.cursor()
-        query = "insert into likes (messageid, usrid) VALUES (%s, %s) returning *;"
+        query = "insert into likes (messageid, usrid) VALUES (%s, %s) on conflict do nothing returning *;"
         cursor.execute(query, (mid, user,))
         result = cursor.fetchone()
         self.connection.commit()
@@ -115,7 +115,7 @@ class MessagesDAO:
 
     def insertDislike(self, mid, user):
         cursor = self.connection.cursor()
-        query = "insert into dislike (messageid, usrid) VALUES (%s, %s) returning *;"
+        query = "insert into dislike (messageid, usrid) VALUES (%s, %s) on conflict do nothing returning *;"
         cursor.execute(query, (mid, user,))
         result = cursor.fetchone()
         self.connection.commit()
