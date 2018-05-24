@@ -51,7 +51,10 @@ def getUserMessagesById(usrid):
 
 @app.route('/JEChat/<name>/Messages/<int:mid>/likes', methods=['GET', 'POST'])
 def getMessageLikes(name, mid):
-    return MessagesHandler().getMessageLikes(name, mid)
+    if request.method == 'POST':
+        return MessagesHandler().insertLikes(request.get_json('data'), mid)
+    else:
+        return MessagesHandler().getMessageLikes(name, mid)
 
 
 @app.route('/JEChat/<gid>/Messages/<int:mid>/dislikes')

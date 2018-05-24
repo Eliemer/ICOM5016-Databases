@@ -28,12 +28,13 @@ class GroupChatHandler:
         return groups
 
     def arrangeCharlie(self, row):
-        groups = {}
-        groups['content'] = row[0]
-        groups['name'] = row[1] +" "+ row[2]
-        groups['likes'] = row[3]
-        groups['dislikes'] = row[4]
-        return groups
+        return {
+            'messageid': row[0],
+            'content': row[1],
+            'name': row[2] + ' ' + row[3],
+            'likes': row[4],
+            'dislikes': row[5]}
+        
 
     def arrangeDelta(self, row):
         reactions = {}

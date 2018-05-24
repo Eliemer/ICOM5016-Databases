@@ -96,7 +96,7 @@ class GroupChatDAO:
                 "inner join members using(groupid) where groupname = %s and members.usrid=%s)," \
                 " all_likes as (select count(*) as l, messageid from likes group by messageid), " \
                 "all_dislikes as (select count(*) as dl, messageid from dislike group by messageid) " \
-                "select content, ufirstname, ulastname, coalesce(l, 0) as likes, coalesce(dl, 0) as dislikes from all_likes " \
+                "select messageid, content, ufirstname, ulastname, coalesce(l, 0) as likes, coalesce(dl, 0) as dislikes from all_likes " \
                 "right outer join all_messages left outer join all_dislikes using(messageid) using(messageid) order by date_sent desc;"
         cursor.execute(query, (groupname, usrid,))
         result = []

@@ -58,6 +58,10 @@ class MessagesHandler:
         reactions['Dislikes'] = row[0][1]
         return reactions
 
+    def arrangeLikes(self, row):
+        likes = {'messageid': row[0], 'usrid': row[1]}
+        return likes
+
     # def arrangeMessageID(self, row):
     #     message = {}
     #     message['message_id'] = row[0]
@@ -179,3 +183,19 @@ class MessagesHandler:
                     return jsonify(ERROR='Could not post message')
             else:
                 return jsonify(ERROR='Wrong form posted')
+
+    def insertLikes(self, form, mid):
+        if len(form) != 1:
+            return jsonify(ERROR='Malformed request form')
+        else:
+            user = form['user']
+            if mid and user:
+                dao = MessagesDAO()
+                mess = dao.insertLike(mid, user)
+                if mess:
+                    result = self.arrangeLikes(mess)
+                    return jsonify(Likes=result)
+                else:
+                    return jsonify(ERROR='Could not post like')
+
+
