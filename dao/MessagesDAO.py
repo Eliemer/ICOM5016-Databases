@@ -126,7 +126,7 @@ class MessagesDAO:
         query = "with old_msg as (select * from messages where messageid=%s)" \
                 " insert into messages (groupid, usrid, date_sent, content) VALUES " \
                 "((select groupid from groupchats where groupname=%s), %s, now(), " \
-                "concat(concat(concat('\"RE: ',(select old_msg.content from old_msg)), '\" '), %s));"
+                "concat(concat(concat('\"RE: ',(select old_msg.content from old_msg)), '\" '), %s)) returning *;"
         cursor.execute(query, (mid, groupname, user, content))
         result = cursor.fetchone()
         self.connection.commit()
