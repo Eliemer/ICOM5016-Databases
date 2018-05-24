@@ -34,7 +34,7 @@ class GroupChatHandler:
             'name': row[2] + ' ' + row[3],
             'likes': row[4],
             'dislikes': row[5]}
-        
+
 
     def arrangeDelta(self, row):
         reactions = {}

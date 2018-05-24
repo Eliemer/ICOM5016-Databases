@@ -184,10 +184,11 @@ class MessagesHandler:
             else:
                 return jsonify(ERROR='Wrong form posted')
 
-    def insertLikes(self, form, mid):
-        if len(form) != 1:
+    def insertLikes(self, form):
+        if len(form) != 2:
             return jsonify(ERROR='Malformed request form')
         else:
+            mid = form['mid']
             user = form['user']
             if mid and user:
                 dao = MessagesDAO()

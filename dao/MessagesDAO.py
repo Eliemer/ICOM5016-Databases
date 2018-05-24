@@ -107,4 +107,8 @@ class MessagesDAO:
 
     def insertLike(self, mid, user):
         cursor = self.connection.cursor()
-        query = "insert into likes (messageid, usrid) VALUES (%s, ()) returning *;"
+        query = "insert into likes (messageid, usrid) VALUES (%s, %s) returning *;"
+        cursor.execute(query, (mid, user,))
+        result = cursor.fetchone()
+        self.connection.commit()
+        return result
