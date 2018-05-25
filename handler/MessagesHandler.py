@@ -24,14 +24,14 @@ class MessagesHandler:
         contents={}
         #contents['Group ID'] = row[0]
         #contents['User ID'] = row[1]
-        contents['First Name'] = row[2]
-        contents['Last Name'] = row[3]
-        contents['Phone'] = row[4]
-        contents['E-mail'] = row[5]
+        contents['firstname'] = row[2]
+        contents['lastname'] = row[3]
+        contents['phone'] = row[4]
+        contents['email'] = row[5]
         #contents['Username'] = row[6]
         #contents['Message ID'] = row[8]
-        contents['Likes'] = row[9]
-        contents['Group Name'] = row[10]
+        contents['likes'] = row[9]
+        contents['groupname'] = row[10]
         #contents['Date Created'] = row[12]
         return contents
 
