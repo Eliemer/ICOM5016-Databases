@@ -37,7 +37,7 @@ class AddressBookDAO:
     def getUserContacts(self, usrid):
         cursor = self.connection.cursor()
         query = "select * from contactlist inner join users u on " \
-                "contactlist.contactid = u.usrid where contactlist.usrid=%s order by u.lastname;"
+                "contactlist.contactid = u.usrid where contactlist.usrid=%s order by u.ulastname;"
         cursor.execute(query, (usrid, ))
         result = []
         for r in cursor:
