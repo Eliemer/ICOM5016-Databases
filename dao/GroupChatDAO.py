@@ -126,7 +126,7 @@ class GroupChatDAO:
     def insertMember(self, gid, item):
         cursor = self.connection.cursor()
         query = "insert into members (usrid, groupid) VALUES" \
-                " ((select usrid from users where uphone=%s or email =%s), (select groupid from groupchats " \
+                " ((select usrid from users where uphone=%s or uusername =%s), (select groupid from groupchats " \
                 "where groupname=%s)) returning *;"
         cursor.execute(query, (item, item, gid,))
         result = cursor.fecthone()
