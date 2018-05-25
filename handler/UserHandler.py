@@ -124,7 +124,7 @@ class UserHandler:
                 dao = UsersDAO()
                 exists = dao.check(username)
                 print (exists)
-                if exists:
+                if not exists:
                     new = dao.insert(fname, lname, phone, email, username, password)
                     result = self.arrangeID(new)
                     return jsonify(User=result)
