@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="35537fcb-540d-49fe-bbdc-8a50a1cdcb2a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/MessagesDAO.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/MessagesDAO.py" afterDir="false" />
-    </list>
+    <list default="true" id="35537fcb-540d-49fe-bbdc-8a50a1cdcb2a" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,8 +32,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="69" column="38" selection-start-line="69" selection-start-column="38" selection-end-line="69" selection-end-column="38" />
+            <state relative-caret-position="435">
+              <caret line="70" column="39" selection-start-line="70" selection-start-column="39" selection-end-line="70" selection-end-column="39" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -47,7 +44,7 @@
       <file leaf-file-name="MessagesHandler.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/handler/MessagesHandler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5358">
+            <state relative-caret-position="-2661">
               <caret line="33" column="27" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
@@ -59,8 +56,8 @@
       <file leaf-file-name="MessagesDAO.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dao/MessagesDAO.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="124" column="41" lean-forward="true" selection-start-line="124" selection-start-column="41" selection-end-line="124" selection-end-column="41" />
+            <state relative-caret-position="239">
+              <caret line="59" column="90" selection-start-line="59" selection-start-column="90" selection-end-line="59" selection-end-column="90" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -213,20 +210,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1521760002302</updated>
-    </task>
-    <task id="LOCAL-00001" summary="Added UserHandler, UserDAO, MessageHandler, MessageDAO and Main">
-      <created>1522008541406</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1522008541406</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Minor fix">
-      <created>1522009228028</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1522009228028</updated>
     </task>
     <task id="LOCAL-00003" summary="Added routes in Main + minor fixes">
       <created>1522180213337</created>
@@ -557,7 +540,21 @@
       <option name="project" value="LOCAL" />
       <updated>1527213092194</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Fixed bug in MessagesHandler in insertReply method">
+      <created>1527214949294</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1527214949313</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Fixed bug in MessagesHandler">
+      <created>1527215466370</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1527215466379</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -623,7 +620,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changed Procfile construct to 'web:gunicorn main:app'" />
     <MESSAGE value="Updated requirements.txt" />
     <MESSAGE value="Changed Procfile contecnt to 'web: python main.py'" />
     <MESSAGE value="Changed Procfile contecnt to 'web:gunicorn python main.py'" />
@@ -647,6 +643,7 @@
     <MESSAGE value="Added functionality for user to reply to a message" />
     <MESSAGE value="Fixed bug in insertReply method" />
     <MESSAGE value="Fixed bug in AddressBookDAO" />
+    <MESSAGE value="Fixed bug in MessagesHandler in insertReply method" />
     <MESSAGE value="Fixed bug in MessagesHandler" />
     <option name="LAST_COMMIT_MESSAGE" value="Fixed bug in MessagesHandler" />
   </component>
@@ -1020,8 +1017,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="69" column="38" selection-start-line="69" selection-start-column="38" selection-end-line="69" selection-end-column="38" />
+        <state relative-caret-position="435">
+          <caret line="70" column="39" selection-start-line="70" selection-start-column="39" selection-end-line="70" selection-end-column="39" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
           </folding>
@@ -1030,7 +1027,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/handler/MessagesHandler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5358">
+        <state relative-caret-position="-2661">
           <caret line="33" column="27" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
@@ -1040,8 +1037,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dao/MessagesDAO.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="124" column="41" lean-forward="true" selection-start-line="124" selection-start-column="41" selection-end-line="124" selection-end-column="41" />
+        <state relative-caret-position="239">
+          <caret line="59" column="90" selection-start-line="59" selection-start-column="90" selection-end-line="59" selection-end-column="90" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>

@@ -57,7 +57,7 @@ class MessagesDAO:
     def getMessageReplies(self, gid, mid):
         cursor = self.connection.cursor()
         query = "select * from users inner join replies using(usrid) inner join members using(usrid)" \
-                " inner join groupchats using(groupid) where messageid=$s and groupname=%s;"
+                " inner join groupchats using(groupid) where messageid=%s and groupname=%s;"
         cursor.execute(query, (mid, gid, ))
         result = []
         for r in cursor:
