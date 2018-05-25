@@ -174,7 +174,7 @@ def getUsersMessages():
 
 @app.route('/JEChat/Users/<username>')
 def getUsersByUsername(username):
-    return UserHandler().getUserByUserName(username)
+    return UserHandler().getUsersByUsername(username)
 # End of User actions ------------------------------------------->
 # End of Messages actions -------------------------------------->
 
