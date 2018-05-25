@@ -122,7 +122,8 @@ class UserHandler:
             password = form['password']
             if fname and lname and phone and email and username and password:
                 dao = UsersDAO()
-                if dao.check(username):
+                exists = dao.check(username)
+                if exists:
                     new = dao.insert(fname, lname, phone, email, username, password)
                     result = self.arrangeID(new)
                     return jsonify(User=result)
