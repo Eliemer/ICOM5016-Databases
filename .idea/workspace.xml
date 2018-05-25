@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="35537fcb-540d-49fe-bbdc-8a50a1cdcb2a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/dao/AddressBookDAO.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/AddressBookDAO.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dao/MessagesDAO.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/MessagesDAO.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,8 +35,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="113" column="39" selection-start-line="113" selection-start-column="39" selection-end-line="113" selection-end-column="39" />
+            <state relative-caret-position="319">
+              <caret line="69" column="38" selection-start-line="69" selection-start-column="38" selection-end-line="69" selection-end-column="38" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -43,29 +44,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddressBook.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/handler/AddressBook.py">
+      <file leaf-file-name="MessagesHandler.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/handler/MessagesHandler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="467">
-              <caret line="64" column="25" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
+            <state relative-caret-position="-5358">
+              <caret line="33" column="27" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddressBookDAO.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/dao/AddressBookDAO.py">
+      <file leaf-file-name="MessagesDAO.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dao/MessagesDAO.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="39" column="95" selection-start-line="39" selection-start-column="95" selection-end-line="39" selection-end-column="95" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DashboardDAO.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dao/DashboardDAO.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="7" column="34" lean-forward="true" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="62" />
+            <state relative-caret-position="297">
+              <caret line="124" column="41" lean-forward="true" selection-start-line="124" selection-start-column="41" selection-end-line="124" selection-end-column="41" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -107,11 +102,11 @@
         <option value="$PROJECT_DIR$/dao/UserDAO.py" />
         <option value="$PROJECT_DIR$/dao/GroupChatDAO.py" />
         <option value="$PROJECT_DIR$/handler/GroupChatHandler.py" />
-        <option value="$PROJECT_DIR$/handler/MessagesHandler.py" />
-        <option value="$PROJECT_DIR$/dao/MessagesDAO.py" />
         <option value="$PROJECT_DIR$/handler/UserHandler.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/dao/AddressBookDAO.py" />
+        <option value="$PROJECT_DIR$/handler/MessagesHandler.py" />
+        <option value="$PROJECT_DIR$/dao/MessagesDAO.py" />
       </list>
     </option>
   </component>
@@ -541,7 +536,28 @@
       <option name="project" value="LOCAL" />
       <updated>1527206749873</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Fixed bug in AddressBookDAO">
+      <created>1527207292858</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1527207292858</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Fixed bug in AddressBookDAO">
+      <created>1527207396312</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1527207396312</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Fixed bug in MessagesHandler">
+      <created>1527213092193</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1527213092194</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -607,7 +623,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changed Procfile construct to 'web:gunicorn DB-Project:app'" />
     <MESSAGE value="Changed Procfile construct to 'web:gunicorn main:app'" />
     <MESSAGE value="Updated requirements.txt" />
     <MESSAGE value="Changed Procfile contecnt to 'web: python main.py'" />
@@ -632,7 +647,8 @@
     <MESSAGE value="Added functionality for user to reply to a message" />
     <MESSAGE value="Fixed bug in insertReply method" />
     <MESSAGE value="Fixed bug in AddressBookDAO" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug in AddressBookDAO" />
+    <MESSAGE value="Fixed bug in MessagesHandler" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug in MessagesHandler" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -964,26 +980,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/handler/MessagesHandler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="230" column="68" selection-start-line="230" selection-start-column="68" selection-end-line="230" selection-end-column="68" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/MessagesDAO.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="128" column="111" selection-start-line="128" selection-start-column="111" selection-end-line="128" selection-end-column="111" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/handler/UserHandler.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
@@ -995,16 +991,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-631">
           <caret line="20" column="51" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="113" column="39" selection-start-line="113" selection-start-column="39" selection-end-line="113" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1028,7 +1014,37 @@
     <entry file="file://$PROJECT_DIR$/dao/AddressBookDAO.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="464">
-          <caret line="39" column="95" selection-start-line="39" selection-start-column="95" selection-end-line="39" selection-end-column="95" />
+          <caret line="39" column="88" selection-start-line="39" selection-start-column="88" selection-end-line="39" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="69" column="38" selection-start-line="69" selection-start-column="38" selection-end-line="69" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/MessagesHandler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5358">
+          <caret line="33" column="27" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/MessagesDAO.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="124" column="41" lean-forward="true" selection-start-line="124" selection-start-column="41" selection-end-line="124" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
