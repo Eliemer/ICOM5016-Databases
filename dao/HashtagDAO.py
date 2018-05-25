@@ -46,6 +46,17 @@ class HashtagDAO:
         self.connection.commit()
         return result
 
+    def parseHash(self, result):
+        hash = []
+        for r in result['content'].split():
+            if r.startswith('#'):
+                hashtags = {'hashtag': r, 'messageid': result['mid']}
+                text = r
+                mid = result['mid']
+                self.insertHashtag(text, mid)
+                hash.append(hashtags)
+        return hash
+
 
 
 

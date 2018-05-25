@@ -226,11 +226,13 @@ class MessagesHandler:
             user = form['user']
             groupname = form['groupname']
             content = form['content']
+            res = {'content': content, 'mid': mid};
             if mid and user and groupname and content:
                 dao = MessagesDAO()
                 mess = dao.insertReply(mid, user, groupname, content)
                 if mess:
                     result = self.arrangeEcho(mess)
+                    hashtag = HashtagDAO().parseHash(res)
                     return jsonify(Reply=result)
                 else:
                     return jsonify(ERROR='Could not post like')
