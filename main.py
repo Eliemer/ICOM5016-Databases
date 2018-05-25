@@ -119,7 +119,7 @@ def getUsersInGroup(gid):
     return GroupChatHandler().getUsersInGroup(gid)
 
 
-@app.route('JEChat/GroupChats/Members', methods=['POST'])
+@app.route('/JEChat/GroupChats/Members', methods=['POST'])
 def addMember():
     if request.method == 'POST':
         return GroupChatHandler().insertMember(request.get_json('data'))

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="35537fcb-540d-49fe-bbdc-8a50a1cdcb2a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/dao/UserDAO.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/UserDAO.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,11 +31,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="667">
-              <caret line="41" column="53" selection-start-line="41" selection-start-column="53" selection-end-line="41" selection-end-column="53" />
+            <state relative-caret-position="471">
+              <caret line="121" column="57" lean-forward="true" selection-start-line="121" selection-start-column="57" selection-end-line="121" selection-end-column="57" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -43,20 +43,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserHandler.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/handler/UserHandler.py">
+      <file leaf-file-name="GroupChatHandler.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/handler/GroupChatHandler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="126" column="22" selection-start-line="126" selection-start-column="22" selection-end-line="126" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserDAO.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/dao/UserDAO.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="694">
-              <caret line="59" column="30" lean-forward="true" selection-start-line="59" selection-start-column="30" selection-end-line="59" selection-end-column="30" />
+            <state relative-caret-position="143">
+              <caret line="222" column="72" lean-forward="true" selection-start-line="222" selection-start-column="72" selection-end-line="222" selection-end-column="72" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -93,13 +87,13 @@
         <option value="$PROJECT_DIR$/dao/DashboardDAO.py" />
         <option value="$PROJECT_DIR$/dao/AddressBookDAO.py" />
         <option value="$PROJECT_DIR$/dao/MessagesDAO.py" />
-        <option value="$PROJECT_DIR$/handler/UserHandler.py" />
-        <option value="$PROJECT_DIR$/handler/GroupChatHandler.py" />
         <option value="$PROJECT_DIR$/dao/GroupChatDAO.py" />
         <option value="$PROJECT_DIR$/dao/HashtagDAO.py" />
+        <option value="$PROJECT_DIR$/dao/UserDAO.py" />
+        <option value="$PROJECT_DIR$/handler/UserHandler.py" />
         <option value="$PROJECT_DIR$/handler/MessagesHandler.py" />
         <option value="$PROJECT_DIR$/main.py" />
-        <option value="$PROJECT_DIR$/dao/UserDAO.py" />
+        <option value="$PROJECT_DIR$/handler/GroupChatHandler.py" />
       </list>
     </option>
   </component>
@@ -206,27 +200,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1521760002302</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Updated requirements.txt">
-      <created>1522872717691</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1522872717691</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Commit for bug fix">
-      <created>1522873580060</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1522873580060</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Commit for bug fix">
-      <created>1522873946954</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1522873946954</updated>
     </task>
     <task id="LOCAL-00017" summary="Updated requirements.txt file">
       <created>1522874390110</created>
@@ -550,7 +523,28 @@
       <option name="project" value="LOCAL" />
       <updated>1527269956494</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Fixed bug">
+      <created>1527270278609</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1527270278609</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Fixed bug">
+      <created>1527270380687</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1527270380687</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Separated the adding memeber method to a separate route">
+      <created>1527272311422</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1527272311422</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -616,7 +610,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changed Procfile contecnt to 'web: python main.py'" />
     <MESSAGE value="Changed Procfile contecnt to 'web:gunicorn python main.py'" />
     <MESSAGE value="Updated project for database functionality, Updated UserDAO, MessagesDAO, GroupChatDAO, AddressBookDAO and their respective handlers." />
     <MESSAGE value="Updated Routes for corresponding project specifications" />
@@ -639,9 +632,10 @@
     <MESSAGE value="Fixed bug in AddressBookDAO" />
     <MESSAGE value="Fixed bug in MessagesHandler in insertReply method" />
     <MESSAGE value="Fixed bug in MessagesHandler" />
-    <MESSAGE value="Fixed bug" />
     <MESSAGE value="Fixed bug in HashtagDAO()" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug in HashtagDAO()" />
+    <MESSAGE value="Fixed bug" />
+    <MESSAGE value="Separated the adding memeber method to a separate route" />
+    <option name="LAST_COMMIT_MESSAGE" value="Separated the adding memeber method to a separate route" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -963,16 +957,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/handler/GroupChatHandler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6757">
-          <caret line="235" column="26" selection-start-line="235" selection-start-column="26" selection-end-line="235" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dao/GroupChatDAO.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="715">
@@ -999,16 +983,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/handler/MessagesHandler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="230" column="35" lean-forward="true" selection-start-line="230" selection-start-column="35" selection-end-line="230" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dao/HashtagDAO.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
@@ -1019,27 +993,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/dao/UserDAO.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="41" column="53" selection-start-line="41" selection-start-column="53" selection-end-line="41" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="694">
+          <caret line="59" column="30" lean-forward="true" selection-start-line="59" selection-start-column="30" selection-end-line="59" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/handler/UserHandler.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="483">
-          <caret line="126" column="22" selection-start-line="126" selection-start-column="22" selection-end-line="126" selection-end-column="22" />
+          <caret line="126" column="18" selection-start-line="126" selection-start-column="18" selection-end-line="126" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/UserDAO.py">
+    <entry file="file://$PROJECT_DIR$/handler/MessagesHandler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="694">
-          <caret line="59" column="30" lean-forward="true" selection-start-line="59" selection-start-column="30" selection-end-line="59" selection-end-column="30" />
+        <state relative-caret-position="1780">
+          <caret line="228" column="51" lean-forward="true" selection-start-line="228" selection-start-column="51" selection-end-line="228" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/GroupChatHandler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="222" column="72" lean-forward="true" selection-start-line="222" selection-start-column="72" selection-end-line="222" selection-end-column="72" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="471">
+          <caret line="121" column="57" lean-forward="true" selection-start-line="121" selection-start-column="57" selection-end-line="121" selection-end-column="57" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
