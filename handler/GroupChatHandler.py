@@ -224,14 +224,15 @@ class GroupChatHandler:
             else:
                 return jsonify(ERROR='Malformed request form')
 
-    def insertMember(self, gid, form):
-        if len(form) != 1:
+    def insertMember(self, form):
+        if len(form) != 2:
             return jsonify(ERROR='Malformed request form')
         else:
-            item = form[0]  # item can be a phone number o email
-            if gid and item:
+            item = form['credential']  # item can be a phone number o email
+            groupname = form['groupname']
+            if groupname and item:
                 dao = GroupChatDAO()
-                result = dao.insertMember(gid, item)
+                result = dao.insertMember(groupname, item)
                 if result:
                     return jsonify(Member=self.arrangeGroupID(result))
                 else:
