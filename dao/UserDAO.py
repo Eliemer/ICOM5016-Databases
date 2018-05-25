@@ -59,7 +59,7 @@ class UsersDAO:
 
     def check(self, username):
         cursor = self.connection.cursor()
-        query = "select exists (select true from users where uusername=%s);"
+        query = "select exists (select false from users where uusername=%s);"
         cursor.execute(query, (username,))
         result = cursor.fetchone()
         self.connection.commit()
