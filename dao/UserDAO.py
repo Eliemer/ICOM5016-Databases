@@ -57,6 +57,14 @@ class UsersDAO:
         self.connection.commit()
         return result
 
+    def check(self, username):
+        cursor = self.connection.cursor()
+        query = "select exists (select true from users where uusername=%s);"
+        cursor.execute(query, (username,))
+        result = cursor.fetchone()
+        self.connection.commit()
+        return result
+
     # def getUserByEmail(self, email):
     #     cursor = self.connection.cursor()
     #     query = "select * from Users where email=%s;"
