@@ -129,6 +129,6 @@ class GroupChatDAO:
                 " ((select usrid from users where uphone=%s or uusername =%s), (select groupid from groupchats " \
                 "where groupname=%s)) returning *;"
         cursor.execute(query, (item, item, gid,))
-        result = cursor.fecthone()
+        result = cursor.fetchone()
         self.connection.commit()
         return result
