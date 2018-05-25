@@ -114,11 +114,16 @@ def getContactsByUser(usrid):
         return AddressBook().getUserContacts(usrid)
 
 
-@app.route('/JEChat/GroupChats/<int:gid>/Members', methods=['GET', 'POST'])
+@app.route('/JEChat/GroupChats/<int:gid>/Members', methods=['GET'])
 def getUsersInGroup(gid):
+    return GroupChatHandler().getUsersInGroup(gid)
+
+
+@app.route('JEChat/GroupChats/Members', methods=['POST'])
+def addMember():
     if request.method == 'POST':
         return GroupChatHandler().insertMember(request.get_json('data'))
-    return GroupChatHandler().getUsersInGroup(gid)
+    return jsonify(ERROR='WRONG METHOD')
 
 
 """ Routes for Dashboard Functionality """
