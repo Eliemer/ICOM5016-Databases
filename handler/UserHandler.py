@@ -123,6 +123,7 @@ class UserHandler:
             if fname and lname and phone and email and username and password:
                 dao = UsersDAO()
                 exists = dao.check(username)
+                print (exists)
                 if exists:
                     new = dao.insert(fname, lname, phone, email, username, password)
                     result = self.arrangeID(new)
