@@ -56,8 +56,8 @@ class MessagesDAO:
 
     def getMessageReplies(self, gid, mid):
         cursor = self.connection.cursor()
-        query = "select * from users natural inner join replies natural inner join members " \
-                    "natural inner join groupchats where messageid=%s and  groupname=%s;"
+        query = "select * from users inner join replies using(usrid) inner join members using(usrid)" \
+                " inner join groupchats using(groupid) where messageid=$s and groupname=%s;"
         cursor.execute(query, (mid, gid, ))
         result = []
         for r in cursor:
@@ -128,8 +128,8 @@ class MessagesDAO:
                 "VALUES ((select groupid from groupchats where groupname= %s), %s, now(), " \
                 "concat(concat(concat('\"RE: ',(select old_msg.content from old_msg)), '\" '), %s)) " \
                 "returning messageid, usrid, content) insert into  replies (messageid, usrid, reply_message) " \
-                "select messageid, usrid, content from new_mess returning *;"
-        cursor.execute(query, (mid, groupname, user, content))
+                "values (%s,(select usrid from new_mess),(select content from new_mess))  returning *;"
+        cursor.execute(query, (mid, groupname, user, content, mid))
         result = cursor.fetchone()
         self.connection.commit()
         return result
