@@ -1,19 +1,17 @@
-from config.db_config import pg_config
+from config.db_config import pg_config, dbconnect
 import psycopg2
 import os
 
 class DashboardDAO:
     def __init__(self):
         # Uncomment for heroku use
-        DATABASE_URL = os.environ['HEROKU_POSTGRESQL_PINK_URL']
-
-        self.connection = psycopg2._connect(DATABASE_URL)
+        # DATABASE_URL = os.environ['HEROKU_POSTGRESQL_PINK_URL']
+        #
+        # self.connection = psycopg2._connect(DATABASE_URL)
 
         # Uncomment for local use
-        # connUrl = "dbname=%s user=%s password=%s" % (pg_config['dbname'],
-        #                                              pg_config['user'],
-        #                                              pg_config['password'])
-        # self.connection = psycopg2._connect(connUrl)
+        connUrl = dbconnect
+        self.connection = psycopg2._connect(connUrl)
 
     def MessagesPerDay(self):
             cursor = self.connection.cursor()

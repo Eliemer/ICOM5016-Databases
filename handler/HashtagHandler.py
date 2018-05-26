@@ -1,6 +1,7 @@
-from flask import *
+from flask import jsonify, request
 from dao.HashtagDAO import *
 from handler.MessagesHandler import *
+
 
 
 class HashtagHandler:
@@ -24,12 +25,10 @@ class HashtagHandler:
             hashtag = form['hashtag']
             mess = []
             if hashtag:
-                result = MessagesHandler().getMessages()
-                for r in result:
-                    for i in r:
-                        content = i['content']
-                        if hashtag in content:
-                            mess.append(r)
+                result = json.loads(MessagesHandler().getMessages().data)
+                for r in result["Messages"]:
+                    content = r["MessageContent"]
+                    if hashtag in content:
+                        mess.append(r)
                 return jsonify(Messages=mess)
-            else:
-                return jsonify(ERROR='Empty form')
+        return jsonify(ERROR='Empty form')
