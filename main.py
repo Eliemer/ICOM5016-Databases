@@ -5,6 +5,7 @@ from handler.GroupChatHandler import *
 from handler.MessagesHandler import *
 from handler.UserHandler import *
 from handler.DashboardHandler import *
+from handler.HashtagHandler import *
 
 app = Flask(__name__)
 # app.config['JSON_SORT_KEYS'] = False
@@ -124,6 +125,12 @@ def addMember():
     if request.method == 'POST':
         return GroupChatHandler().insertMember(request.get_json('data'))
     return jsonify(ERROR='WRONG METHOD')
+
+
+@app.route('/JEChat/Hashtags', methods=['POST'])
+def getMessagesWithHashtag():
+    if request.method == 'POST':
+        return HashtagHandler().getMessagesWithHashtags(request.get_json('data'))
 
 
 """ Routes for Dashboard Functionality """
