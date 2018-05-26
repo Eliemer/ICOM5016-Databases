@@ -26,9 +26,10 @@ class HashtagHandler:
             if hashtag:
                 result = MessagesHandler().getMessages()
                 for r in result:
-                    content = r['content']
-                    if hashtag in content:
-                        mess.append(r)
+                    for i in r:
+                        content = i['content']
+                        if hashtag in content:
+                            mess.append(r)
                 return jsonify(Messages=mess)
             else:
                 return jsonify(ERROR='Empty form')
