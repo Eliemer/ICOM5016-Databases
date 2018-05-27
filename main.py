@@ -131,6 +131,8 @@ def addMember():
 def getMessagesWithHashtag():
     if request.method == 'POST':
         return HashtagHandler().getMessagesWithHashtags(request.get_json('data'))
+    else:
+        return jsonify(ERROR='WRONG METHOD')
 
 
 """ Routes for Dashboard Functionality """
