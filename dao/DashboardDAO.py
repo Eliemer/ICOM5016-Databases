@@ -63,8 +63,8 @@ class DashboardDAO:
 
     def ActiveUsers(self):
         cursor = self.connection.cursor()
-        query = "select count(*) as count, to_char(me.date_sent, 'MM-DD') as day, concat(ufirstname, concat(' ', ulastname)) as name " \
-                "from messages as me natural inner join users group by day, name order by day desc, count desc;"
+        query = "select count(*) as count, to_char(me.date_sent, 'MM-DD') as day, usrid " \
+                "from messages as me natural inner join users group by day, usrid order by day desc, count desc;"
         cursor.execute(query)
         result = []
         for r in cursor:
