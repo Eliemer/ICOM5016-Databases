@@ -82,7 +82,7 @@ class GroupChatDAO:
 
     def getUserGroupchats(self, usrid):
         cursor = self.connection.cursor()
-        query = "select * from groupchats natural inner join members where usrid=%s"
+        query = "select * from groupchats natural inner join members where usrid=%s and show=TRUE;"
         cursor.execute(query, (usrid,))
         result = []
         for r in cursor:
